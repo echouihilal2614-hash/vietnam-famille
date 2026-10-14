@@ -1388,6 +1388,7 @@ function initMap(){
   const proj = new THREE.Vector3();
   const W = () => stage.clientWidth, Hh = () => stage.clientHeight;
   setLegs(DAYS()); labelPins(); overview();
+  if (fly) fly.dur = 0; // à l'ouverture, on part directement de la vue d'ensemble
 
   function placePin(m, st){
     proj.copy(m.pos); proj.y += 0.05; proj.project(camera);
