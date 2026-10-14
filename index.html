@@ -1,0 +1,1542 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="description" content="Le programme de notre voyage en famille au Vietnam, du 31 octobre au 12 novembre 2026."><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>[hidden]{display:none!important}</style></head><body><title>Việt Nam en famille</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap">
+<style>
+/* Concept : un carnet de nuit. Le Vietnam en relief comme une plaque de laque jade posée sur une mer sombre,
+   les étapes allumées comme des lanternes. Trois programmes au choix ; tout le carnet suit le programme choisi.
+   Barre latérale à gauche, carte à droite ; sur téléphone tout s'empile. Un seul thème, sombre, assumé. */
+:root{
+  color-scheme: dark;
+  --night:#06110F; --night-2:#0A1A17; --night-3:#10241F;
+  --paper:#ECE7DA; --paper-2:#BAC6BF; --paper-3:#8D9E96;
+  --jade:#56B898; --jade-2:#2B7C67;
+  --lantern:#F2B544; --lantern-ink:#2A1A02;
+  --seal:#EA6049; --wa:#25D366;
+  --line:rgba(236,231,218,.11); --line-2:rgba(236,231,218,.22);
+  --display:"Newsreader","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --sans:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --top:56px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--top) + 12px)}
+body{margin:0;background:var(--night);color:var(--paper);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--lantern)}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--lantern);outline-offset:2px}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+img{display:block;max-width:100%}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--jade)}
+.icon{width:16px;height:16px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- barre du haut ---------- */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;display:flex;align-items:center;gap:16px;height:var(--top);padding-inline:clamp(16px,3vw,32px);background:rgba(6,17,15,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{font-family:var(--display);font-style:italic;font-size:20px;white-space:nowrap;color:var(--paper);text-decoration:none}
+.brand span{font-style:normal;color:var(--lantern)}
+.topnav{display:flex;gap:2px;overflow-x:auto;margin-left:auto;scrollbar-width:none;min-width:0}
+.topnav::-webkit-scrollbar{display:none}
+.topnav a{color:var(--paper-2);text-decoration:none;font-size:14px;padding:8px 12px;border-radius:999px;white-space:nowrap}
+.topnav a:hover{color:var(--paper);background:var(--night-3)}
+.topnav a.hl{color:var(--lantern)}
+
+/* ---------- appli : titre + carte + détail ---------- */
+.app{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"hero" "stage" "panel"}
+.side{display:contents}
+.hero{grid-area:hero;padding:24px 16px 20px;display:grid;gap:14px;min-width:0;position:relative;isolation:isolate;overflow:hidden}
+/* photo de Hilal à Sa Pa en fond, sous un voile sombre pour garder le texte lisible */
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:url(img/hilal-sapa.jpg) center 62%/cover no-repeat}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,17,15,.62) 0%,rgba(6,17,15,.5) 30%,rgba(6,17,15,.72) 60%,rgba(6,17,15,.94) 85%,var(--night) 100%)}
+.hero h1,.hero .lead,.hero .eyebrow{text-shadow:0 1px 14px rgba(0,0,0,.55)}
+.hero .lead{color:var(--paper)}
+.credit{position:absolute;right:12px;top:10px;font-size:10.5px;letter-spacing:.04em;color:rgba(236,231,218,.6);text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(44px,9vw,62px);line-height:.95;letter-spacing:-.01em}
+.hero h1 em{display:block;font-style:italic;color:var(--lantern)}
+.hero h1 span{display:block;font-size:.5em;margin-top:6px;color:var(--paper)}
+.lead{color:var(--paper-2);max-width:48ch;font-size:15px}
+.progs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.prog{display:grid;gap:2px;align-content:start;padding:10px 10px 11px;border-radius:14px;background:var(--night-2);border:1px solid var(--line-2);cursor:pointer;text-align:left;min-width:0}
+.prog .l{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;border:1px solid var(--paper-3);font:600 12px/1 var(--sans);color:var(--paper-2);margin-bottom:4px}
+.prog b{font:italic 500 17px/1.1 var(--display);color:var(--paper)}
+.prog small{font-size:11.5px;line-height:1.3;color:var(--paper-3)}
+.prog[aria-selected="true"]{border-color:var(--lantern);background:rgba(242,181,68,.09)}
+.prog[aria-selected="true"] .l{background:var(--lantern);border-color:var(--lantern);color:var(--lantern-ink)}
+.pdesc{display:grid;gap:8px;font-size:13.5px;color:var(--paper-2)}
+.pdesc .pm{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 14px}
+.pdesc .pm span{display:flex;gap:6px;align-items:baseline}
+.pdesc .pm .p::before{content:"+";color:var(--jade);font-weight:700}
+.pdesc .pm .m::before{content:"−";color:var(--seal);font-weight:700}
+.stats{display:flex;flex-wrap:wrap;gap:6px 18px;list-style:none;margin:0;padding:0;font-size:13.5px;color:var(--paper-2)}
+.stats b{font-family:var(--display);font-weight:500;font-size:22px;color:var(--paper);margin-right:4px;font-variant-numeric:tabular-nums}
+.count{display:inline-flex;align-items:center;gap:8px;justify-self:start;font-size:13px;font-weight:500;color:var(--lantern);border:1px solid rgba(242,181,68,.4);border-radius:999px;padding:5px 12px}
+.count::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lantern);box-shadow:0 0 10px var(--lantern)}
+
+.stage{grid-area:stage;position:relative;height:clamp(460px,66svh,720px);overflow:hidden;background:radial-gradient(120% 80% at 50% 45%,#0D2420 0%,var(--night) 70%);touch-action:pan-y}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y}
+.pins{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.pin{position:absolute;left:0;top:0;transform:translate(-999px,-999px);pointer-events:auto;display:flex;align-items:baseline;gap:7px;min-height:30px;padding:5px 11px;border-radius:999px;background:rgba(8,22,19,.8);border:1px solid var(--line-2);color:var(--paper);font:500 11px/1.2 var(--sans);letter-spacing:.03em;white-space:nowrap;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .25s,border-color .25s,color .25s,opacity .25s;will-change:transform}
+.pin .n{font:italic 500 16px/1 var(--display);letter-spacing:0}
+.pin .d{color:var(--paper-3)}
+.pin:hover{border-color:var(--lantern)}
+.pin[aria-pressed="true"]{background:var(--lantern);border-color:var(--lantern);color:var(--lantern-ink)}
+.pin[aria-pressed="true"] .d{color:rgba(42,26,2,.72)}
+.pin.minor .n{font-size:14px}
+.pin.off{opacity:0;pointer-events:none}
+.geo{position:absolute;left:0;top:0;font:600 10px/1 var(--sans);letter-spacing:.32em;color:rgba(236,231,218,.26);pointer-events:none;white-space:nowrap}
+.tools{position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:6px;z-index:3}
+.tbtn{display:grid;place-items:center;min-width:40px;height:40px;padding:0 12px;border-radius:12px;background:rgba(8,22,19,.82);border:1px solid var(--line-2);color:var(--paper);cursor:pointer;font-size:18px;line-height:1}
+.tbtn.txt{font-size:12px;font-weight:600}
+.tbtn:hover{border-color:var(--lantern)}
+.legend{position:absolute;top:14px;left:14px;display:flex;flex-direction:column;gap:6px;font-size:11px;color:var(--paper-2);z-index:3;pointer-events:none}
+.legend span{display:flex;align-items:center;gap:8px}
+.legend i{display:block;width:22px;height:0;border-top:2px solid var(--jade)}
+.legend i.fly{border-top:2px dashed var(--lantern)}
+.hint{position:absolute;left:50%;bottom:76px;transform:translateX(-50%);font-size:12px;color:var(--paper-2);pointer-events:none;white-space:nowrap;z-index:2;padding:5px 12px;border-radius:999px;background:rgba(8,22,19,.7)}
+.stage.narrow #zin,.stage.narrow #zout{display:none}
+.stage.narrow .pin:not([aria-pressed="true"]) .d{display:none}
+.stage.narrow .legend{top:12px;left:12px}
+.dock{position:absolute;left:10px;right:10px;bottom:10px;display:flex;align-items:center;gap:8px;z-index:3}
+.play{flex:none;display:inline-flex;align-items:center;gap:8px;height:52px;padding:0 16px;border-radius:14px;background:var(--lantern);color:var(--lantern-ink);border:0;font-weight:600;font-size:13px;cursor:pointer}
+.play .icon{fill:currentColor;stroke:none}
+.days{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:1px;min-width:0;flex:1}
+.days::-webkit-scrollbar{display:none}
+.chip{flex:none;display:grid;justify-items:center;align-content:center;gap:1px;width:54px;height:52px;border-radius:12px;background:rgba(8,22,19,.84);border:1px solid var(--line-2);color:var(--paper-3);font:500 10.5px/1.15 var(--sans);cursor:pointer;position:relative}
+.chip b{font:500 18px/1 var(--display);color:var(--paper)}
+.chip.move::after{content:"";position:absolute;top:6px;right:6px;width:5px;height:5px;border-radius:50%;background:var(--jade)}
+.chip.fly::after{background:var(--lantern)}
+.chip[aria-pressed="true"]{background:var(--lantern);border-color:var(--lantern);color:rgba(42,26,2,.75)}
+.chip[aria-pressed="true"] b{color:var(--lantern-ink)}
+.chip.end{width:auto;padding:0 12px;color:var(--paper-2);cursor:default}
+.chip.end b{font-size:14px}
+.peek{position:absolute;left:10px;right:10px;bottom:72px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-radius:14px;background:rgba(8,22,19,.92);border:1px solid var(--line-2);z-index:3;text-decoration:none;color:var(--paper)}
+.peek b{font:italic 500 18px/1.1 var(--display)}
+.peek small{display:block;color:var(--paper-3);font-size:12px}
+.peek span:last-child{font-size:13px;font-weight:600;color:var(--lantern);white-space:nowrap}
+.nogl{position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center;color:var(--paper-2);z-index:4}
+.panel{grid-area:panel;padding:24px 16px 32px;min-width:0;border-top:1px solid var(--line)}
+@media (min-width:1000px){
+  .app{grid-template-columns:minmax(390px,450px) minmax(0,1fr);grid-template-areas:"side stage";height:calc(100svh - var(--top) - env(safe-area-inset-top,0px));min-height:620px}
+  .side{grid-area:side;display:block;position:relative;overflow-y:auto;min-height:0;border-right:1px solid var(--line)}
+  .hero{padding:22px 28px 16px;gap:12px}
+  .hero h1{font-size:52px}
+  .panel{padding:20px 28px 40px}
+  .stage{height:auto;min-height:0}
+  .peek{display:none}
+  .dock{left:16px;right:16px;bottom:16px}
+  .legend{top:18px;left:18px}
+}
+
+/* ---------- détail d'une étape ---------- */
+.p-photo{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:16px;margin-bottom:16px;background:var(--night-3)}
+.p-head{display:grid;gap:10px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.p-name{font:italic 400 clamp(40px,7vw,50px)/1 var(--display);color:var(--paper)}
+.p-fr{font-size:15px;color:var(--paper-2)}
+.p-blurb{color:var(--paper-2);max-width:60ch}
+.facts{display:grid;gap:8px;margin:4px 0 0}
+.facts div{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px}
+.facts dt{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-3);padding-top:3px}
+.facts dd{margin:0;font-size:14px;color:var(--paper)}
+.back{justify-self:start;background:none;border:0;padding:6px 0;color:var(--lantern);font-size:13px;font-weight:600;cursor:pointer}
+.tip{margin-top:20px;padding:14px 16px;border-radius:12px;background:var(--night-3);font-size:14px;color:var(--paper-2)}
+.tip b{color:var(--paper);font-weight:600}
+.overview{list-style:none;margin:14px 0 0;padding:0;display:grid}
+.overview button{width:100%;display:grid;grid-template-columns:52px minmax(0,1fr) auto;align-items:center;gap:12px;padding:10px 2px;background:none;border:0;border-bottom:1px solid var(--line);cursor:pointer;text-align:left}
+.overview img{width:52px;height:52px;border-radius:10px;object-fit:cover}
+.overview .on{font:italic 500 21px/1.1 var(--display);color:var(--paper)}
+.overview .on small{display:block;font:400 12.5px/1.4 var(--sans);font-style:normal;color:var(--paper-3)}
+.overview button:hover .on{color:var(--lantern)}
+.overview .nt{font-size:12px;color:var(--paper-2);white-space:nowrap;text-align:right}
+
+/* ---------- une journée ---------- */
+.dlist{list-style:none;margin:0;padding:0;display:grid}
+.day{position:relative;padding:20px 0 22px;border-bottom:1px solid var(--line);scroll-margin-top:16px}
+.day.cur{padding-left:14px;border-left:2px solid var(--lantern)}
+.day-top{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:13px;color:var(--paper-2)}
+.jn{font:500 13px/1 var(--sans);letter-spacing:.06em;color:var(--lantern)}
+.pace{display:inline-flex;align-items:center;gap:3px;font-size:12px;color:var(--paper-3)}
+.pace i{width:7px;height:7px;border-radius:50%;border:1px solid var(--jade)}
+.pace i.f{background:var(--jade)}
+.pace em{font-style:normal;margin-left:4px}
+.day h3{font:italic 500 24px/1.15 var(--display);margin-top:8px;color:var(--paper)}
+.day .where{font-size:13px;color:var(--paper-3);margin-top:2px}
+.leg{display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-size:13px;color:var(--paper-2);padding:5px 10px;border-radius:8px;background:var(--night-3)}
+.leg.fly{color:var(--lantern)}
+.slots{display:grid;gap:8px;margin:14px 0 0}
+.slots div{display:grid;grid-template-columns:86px minmax(0,1fr);gap:12px}
+.slots dt{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--jade);padding-top:4px}
+.slots dd{margin:0;font-size:15px;color:var(--paper)}
+.note{margin-top:12px;font-size:14px;color:var(--paper-2);padding-left:12px;border-left:2px solid var(--jade-2)}
+.mapbtn{margin-top:12px;display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--line-2);border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:600;color:var(--paper-2);cursor:pointer}
+.mapbtn:hover{border-color:var(--lantern);color:var(--lantern)}
+
+/* ---------- sections du carnet ---------- */
+.sec{padding-block:72px;border-top:1px solid var(--line)}
+.wrap{max-width:1160px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+.sec-head{display:grid;gap:12px;margin-bottom:32px;max-width:68ch}
+.sec-head h2{font:400 clamp(32px,5vw,48px)/1.05 var(--display)}
+.sec-head h2 em{font-style:italic;color:var(--lantern)}
+.sec-head p{color:var(--paper-2)}
+.prog-list{display:grid;gap:40px}
+@media (min-width:900px){.prog-list{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px}}
+.leg-group{min-width:0}
+.leg-group header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid var(--line-2)}
+.leg-group h3{font:italic 400 30px/1.1 var(--display)}
+.leg-group header span{font-size:13px;color:var(--paper-3);white-space:nowrap}
+.depart{margin-top:28px;display:flex;align-items:center;gap:12px;padding:16px 18px;border-radius:14px;border:1px dashed rgba(242,181,68,.5);color:var(--paper-2)}
+.depart b{color:var(--lantern);font-weight:600}
+
+/* photos */
+.places{display:grid;gap:20px}
+@media (min-width:720px){.places{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1100px){.places{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.place{display:grid;align-content:start;border-radius:20px;overflow:hidden;background:var(--night-2);border:1px solid var(--line);min-width:0;transition:opacity .3s}
+.place.dim{opacity:.5}
+.ph{position:relative;aspect-ratio:4/3;background:var(--night-3)}
+.ph img{width:100%;height:100%;object-fit:cover}
+.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,17,15,0) 45%,rgba(6,17,15,.85) 100%);pointer-events:none}
+.ph h3{position:absolute;left:18px;bottom:14px;z-index:1;font:italic 400 34px/1 var(--display);color:var(--paper)}
+.ph .tags{position:absolute;top:12px;left:12px;z-index:1;display:flex;gap:4px}
+.ph .tags span{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:rgba(6,17,15,.7);border:1px solid var(--line-2);font:600 11px/1 var(--sans);color:var(--paper-2)}
+.ph .tags span.on{background:var(--lantern);border-color:var(--lantern);color:var(--lantern-ink)}
+.thumbs{position:absolute;right:12px;bottom:12px;z-index:1;display:flex;gap:6px}
+.thumbs button{width:44px;height:44px;padding:0;border-radius:10px;overflow:hidden;border:2px solid rgba(236,231,218,.35);background:none;cursor:pointer}
+.thumbs button[aria-pressed="true"]{border-color:var(--lantern)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.place-body{padding:16px 18px 18px;display:grid;gap:12px}
+.place-body .sub{font-size:14px;color:var(--paper-2)}
+.must{margin:0;padding:0;list-style:none;display:grid;gap:7px}
+.must li{display:grid;grid-template-columns:14px minmax(0,1fr);gap:8px;font-size:14.5px;color:var(--paper)}
+.must li::before{content:"";width:7px;height:7px;margin-top:8px;border-radius:50%;background:var(--lantern)}
+.idea{display:grid;gap:6px;padding-top:12px;border-top:1px solid var(--line)}
+.idea label{font-size:12px;font-weight:600;color:var(--paper-3)}
+.field{width:100%;min-height:44px;padding:10px 12px;border-radius:10px;border:1px solid var(--line-2);background:var(--night);color:var(--paper);font-size:16px}
+.field:focus{border-color:var(--lantern);outline:none}
+textarea.field{min-height:96px;resize:vertical;line-height:1.5}
+.saved{font-size:12px;color:var(--jade);min-height:16px}
+
+/* budget */
+.seg{display:inline-flex;padding:4px;border-radius:999px;background:var(--night-3);flex-wrap:wrap}
+.seg button{border:0;background:none;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600;color:var(--paper-2);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--paper);color:var(--night)}
+.tri{display:grid;gap:12px;margin:22px 0 28px}
+@media (min-width:760px){.tri{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.tcard{display:grid;gap:4px;padding:16px 18px;border-radius:16px;background:var(--night-2);border:1px solid var(--line-2);text-align:left;cursor:pointer}
+.tcard .tn{font:italic 500 20px/1.2 var(--display);color:var(--paper)}
+.tcard .big{font:600 15px/1.4 var(--sans);font-variant-numeric:tabular-nums;color:var(--paper-2)}
+.tcard .pp{font-size:13px;color:var(--paper-3)}
+.tcard[aria-pressed="true"]{border-color:var(--lantern);background:rgba(242,181,68,.06)}
+.bud{display:grid;gap:40px}
+@media (min-width:900px){.bud{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:64px}}
+.bars{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.bars li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;font-size:14px;color:var(--paper-2)}
+.bars .v{font:500 14px/1.4 var(--sans);color:var(--paper-2);font-variant-numeric:tabular-nums;text-align:right}
+.bars .b{grid-column:1/-1;height:8px;border-radius:4px;background:var(--night-3);overflow:hidden}
+.bars .b i{display:block;height:100%;width:calc(var(--v) * 1%);border-radius:4px;background:linear-gradient(90deg,var(--jade-2),var(--jade));transition:width .4s}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin-top:22px;padding-top:16px;border-top:1px solid var(--line-2);font-size:14px;color:var(--paper-2)}
+.total b{font:600 15px/1.4 var(--sans);color:var(--paper)}
+.aside{display:grid;gap:14px;align-content:start}
+.aside h3{font:italic 500 22px/1.2 var(--display)}
+.aside ul{margin:0;padding-left:18px;color:var(--paper-2);display:grid;gap:8px;font-size:15px}
+.aside p{font-size:14px;color:var(--paper-3)}
+
+/* vos choix */
+.form{display:grid;gap:34px;max-width:880px}
+.step{display:grid;gap:14px}
+.step h3{font:italic 500 26px/1.15 var(--display)}
+.step h3 small{font:400 14px/1.4 var(--sans);font-style:normal;color:var(--paper-3);margin-left:8px}
+.who{display:flex;flex-wrap:wrap;gap:8px}
+.who button{min-height:48px;padding:0 22px;border-radius:999px;border:1px solid var(--line-2);background:var(--night-2);font:italic 500 20px/1 var(--display);cursor:pointer}
+.who button[aria-pressed="true"]{background:var(--lantern);border-color:var(--lantern);color:var(--lantern-ink)}
+.opts{display:grid;gap:8px}
+@media (min-width:700px){.opts{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.opt{display:grid;gap:2px;align-content:start;padding:12px 14px;border-radius:14px;border:1px solid var(--line-2);background:var(--night-2);text-align:left;cursor:pointer}
+.opt b{font:italic 500 18px/1.15 var(--display)}
+.opt small{font-size:12.5px;color:var(--paper-3)}
+.opt[aria-pressed="true"]{border-color:var(--lantern);background:rgba(242,181,68,.09)}
+.likes{display:grid;border-top:1px solid var(--line)}
+.like{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;padding:12px 0;border-bottom:1px solid var(--line)}
+@media (min-width:700px){.like{grid-template-columns:minmax(0,1fr) auto;align-items:center}}
+.like .lt{font-size:15px}
+.like .lt small{display:block;font-size:12px;color:var(--paper-3)}
+.tri3{display:inline-flex;flex-wrap:wrap;gap:4px}
+.tri3 button{min-height:40px;padding:0 13px;border-radius:999px;border:1px solid var(--line-2);background:none;font-size:13px;font-weight:600;color:var(--paper-2);cursor:pointer}
+.tri3 button[data-v="2"][aria-pressed="true"]{background:var(--jade);border-color:var(--jade);color:#04120D}
+.tri3 button[data-v="1"][aria-pressed="true"]{background:var(--paper-2);border-color:var(--paper-2);color:var(--night)}
+.tri3 button[data-v="0"][aria-pressed="true"]{background:var(--seal);border-color:var(--seal);color:#1E0602}
+.send{display:grid;gap:14px;padding:22px;border-radius:20px;background:var(--night-2);border:1px solid var(--line-2)}
+.send h3{font:italic 500 24px/1.2 var(--display)}
+.send pre{margin:0;padding:14px;border-radius:12px;background:var(--night);border:1px solid var(--line);white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.55 var(--sans);color:var(--paper-2);max-height:260px;overflow:auto}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:14px;border:1px solid var(--line-2);background:none;font-size:15px;font-weight:600;color:var(--paper);text-decoration:none;cursor:pointer}
+.btn.wa{background:var(--wa);border-color:var(--wa);color:#04190C}
+.btn.save{background:var(--lantern);border-color:var(--lantern);color:var(--lantern-ink)}
+.btn[aria-disabled="true"]{opacity:.45}
+.status{font-size:13px;color:var(--jade);min-height:18px}
+.board{display:grid;gap:18px;margin-top:40px;padding-top:32px;border-top:1px solid var(--line-2)}
+.board h3{font:italic 500 28px/1.15 var(--display)}
+.bgrid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.bcell{padding:16px;border-radius:14px;background:var(--night-2);border:1px solid var(--line)}
+.bcell b{font:italic 500 19px/1.2 var(--display)}
+.bcell p{font-size:13.5px;color:var(--paper-2);margin-top:6px}
+.bcell .n{font:500 30px/1 var(--display);color:var(--lantern);float:right}
+.btable{width:100%;border-collapse:collapse;font-size:14px}
+.btable th{text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper-3);font-weight:600;padding:8px 10px 8px 0;border-bottom:1px solid var(--line-2)}
+.btable td{padding:9px 10px 9px 0;border-bottom:1px solid var(--line);color:var(--paper-2);vertical-align:top}
+.btable td:first-child{color:var(--paper)}
+.scroll-x{overflow-x:auto}
+.notes{display:grid;gap:10px}
+.notes div{padding:12px 14px;border-radius:12px;background:var(--night-2);font-size:14px;color:var(--paper-2);overflow-wrap:anywhere}
+.notes b{color:var(--paper)}
+
+/* comparatif */
+.tally{display:flex;flex-wrap:wrap;gap:10px 28px;list-style:none;margin:0 0 28px;padding:0;color:var(--paper-2);font-size:14px}
+.tally b{font:500 30px/1 var(--display);color:var(--paper);margin-right:6px;font-variant-numeric:tabular-nums}
+.cmp{display:grid;margin-top:12px}
+.cmp-h{display:none}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"idea verdict" "gyg verdict" "ours ours";gap:10px 18px;padding-block:22px;border-top:1px solid var(--line)}
+.row .idea{grid-area:idea;min-width:0}
+.row .place-n{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--jade)}
+.row .what{font:italic 500 20px/1.25 var(--display);margin-top:4px}
+.row .src{display:inline-flex;align-items:center;gap:4px;margin-top:6px;font-size:12.5px;color:var(--paper-3);text-decoration:none}
+.row .src:hover{color:var(--lantern)}
+.row .src .icon{width:13px;height:13px}
+.row .gyg{grid-area:gyg;font-size:14px;color:var(--paper-2)}
+.row .gyg b,.row .ours b{font:600 14px/1.4 var(--sans);color:var(--paper-2);font-variant-numeric:tabular-nums}
+.alts{margin-top:10px;display:grid;gap:6px}
+.alts ul,.tr-row ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.alts li,.tr-row li{display:grid;grid-template-columns:16px minmax(0,1fr) auto;gap:8px;align-items:start;font-size:13.5px;color:var(--paper-2)}
+.alts li .icon,.tr-row li .icon{margin-top:3px}
+.alts b,.tr-row b{font-weight:600;color:var(--paper)}
+.alts small,.tr-row small{display:block;font-size:12.5px;color:var(--paper-3)}
+.sub-h{font:italic 500 26px/1.2 var(--display);margin-bottom:6px}
+.sub-h span{color:var(--lantern)}
+.sub-p{color:var(--paper-2);font-size:14.5px;margin-bottom:16px}
+.trans{display:grid;gap:12px;margin-bottom:36px}
+@media (min-width:820px){.trans{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tr-row{padding:16px 18px;border-radius:16px;background:var(--night-2);border:1px solid var(--line);display:grid;gap:10px;align-content:start;min-width:0}
+.tr-leg{display:flex;gap:10px;align-items:baseline;font:italic 500 19px/1.2 var(--display)}
+.tr-row li.chosen{color:var(--paper)}
+.tr-row li em{font-style:normal;font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--lantern);white-space:nowrap;padding-top:3px}
+.row .gyg small,.row .ours small{display:block;font-size:12px;color:var(--paper-3);margin-top:3px}
+.row .ours{grid-area:ours;min-width:0;font-size:14.5px;color:var(--paper)}
+.row .ours p{color:var(--paper-2);margin-top:6px;font-size:14px}
+.lbl{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-3);margin-bottom:4px}
+.verdict{grid-area:verdict;align-self:start;justify-self:end}
+.stamp{display:grid;place-items:center;align-content:center;width:86px;height:86px;border-radius:50%;border:2px solid var(--seal);box-shadow:inset 0 0 0 4px var(--night),inset 0 0 0 5px var(--seal);color:var(--seal);transform:rotate(-9deg);text-align:center}
+.stamp b{font:500 21px/1 var(--display);font-variant-numeric:tabular-nums}
+.stamp small{font-size:9.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
+.stamp.up{border-color:var(--lantern);box-shadow:inset 0 0 0 4px var(--night),inset 0 0 0 5px var(--lantern);color:var(--lantern)}
+.pill{display:inline-block;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap;border:1px solid}
+.pill.keep{color:var(--jade);border-color:rgba(86,184,152,.5)}
+.pill.soft{color:var(--lantern);border-color:rgba(242,181,68,.5)}
+.pill.skip{color:var(--paper-3);border-color:var(--line-2)}
+.row.skip .what{color:var(--paper-3);text-decoration:line-through;text-decoration-color:rgba(236,231,218,.3)}
+@media (min-width:880px){
+  .cmp-h,.row{grid-template-columns:minmax(0,1.25fr) 150px minmax(0,1.6fr) 110px;grid-template-areas:"idea gyg ours verdict";column-gap:28px}
+  .cmp-h{display:grid;padding-bottom:10px}
+  .cmp-h span{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-3)}
+  .row .lbl{display:none}
+}
+
+/* pratique */
+.cards{display:grid;gap:16px}
+@media (min-width:820px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.card{padding:24px;border-radius:18px;background:var(--night-2);border:1px solid var(--line);display:grid;gap:14px;align-content:start;min-width:0}
+.card h3{font:italic 500 24px/1.15 var(--display)}
+.card dl{margin:0;display:grid;gap:12px}
+.card dt{font-weight:600;font-size:14px;color:var(--paper)}
+.card dd{margin:2px 0 0;font-size:14.5px;color:var(--paper-2)}
+.card .hl{color:var(--lantern)}
+.when{display:grid;gap:14px}
+.when div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px}
+.when b{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--lantern);padding-top:2px}
+.when p{font-size:14.5px;color:var(--paper-2)}
+.left-out{margin-top:16px;display:grid;gap:16px}
+@media (min-width:820px){.left-out{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.left-out div{padding:18px;border-radius:14px;border:1px dashed var(--line-2)}
+.left-out b{display:block;font:italic 500 20px/1.2 var(--display);margin-bottom:6px;text-decoration:line-through;text-decoration-color:rgba(234,96,73,.7)}
+.left-out p{font-size:14px;color:var(--paper-2)}
+
+footer{padding-block:48px 64px;border-top:1px solid var(--line);color:var(--paper-3);font-size:13px}
+footer h2{font:italic 500 20px/1.2 var(--display);color:var(--paper-2);margin:0 0 12px}
+footer ul{margin:0 0 28px;padding-left:18px;display:grid;gap:4px}
+footer a{color:var(--paper-2)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .pin,.chip,.bars .b i,.place{transition:none}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12s-8-7-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 4h3.5v16H7zM13.5 4H17v16h-3.5z"/></symbol>
+  <symbol id="i-train" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="13" rx="3"/><path d="M5 10h14"/><path d="M9 20l-2 2"/><path d="M15 20l2 2"/><path d="M8.5 13h.01M15.5 13h.01"/></symbol>
+  <symbol id="i-bus" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M3 10h18"/><circle cx="7.5" cy="19" r="1.5"/><circle cx="16.5" cy="19" r="1.5"/></symbol>
+  <symbol id="i-boat" viewBox="0 0 24 24"><path d="M2 20c2 1 4 1 6 0s4-1 6 0 4 1 6 0"/><path d="M4 16l1.5-5h13L20 16"/><path d="M12 4v7"/><path d="M12 5l5 4h-5"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20.5l1.8-5.2A8.4 8.4 0 1 1 21 11.5z"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+</svg>
+
+<header class="topbar">
+  <a class="brand" href="#carte">Việt Nam <span>·</span> en famille</a>
+  <nav class="topnav" aria-label="Sections">
+    <a href="#carte">Carte</a>
+    <a href="#programme">Programme</a>
+    <a href="#photos">Photos</a>
+    <a href="#budget">Budget</a>
+    <a href="#choix" class="hl">Vos choix</a>
+    <a href="#trajets">Trajets</a>
+    <a href="#idees">Vos liens</a>
+    <a href="#pratique">Pratique</a>
+  </nav>
+</header>
+
+<div class="app">
+  <div class="side" id="side">
+  <div class="hero">
+    <span class="credit">Photo : Hilal, à Sa Pa</span>
+    <p class="eyebrow">Carnet de voyage · 31 oct. → 12 nov. 2026</p>
+    <h1><em>Việt Nam</em><span>en famille</span></h1>
+    <p class="lead">Ahmed, Mounira, Bochra et Hilal. Trois jours ensemble dans l'appartement de Hanoï, puis trois façons de continuer, sans randonnée ni course. Regardez les programmes, puis votez en bas de la page.</p>
+    <div class="progs" role="tablist" aria-label="Programmes" id="progs"></div>
+    <div class="pdesc" id="pdesc"></div>
+    <ul class="stats" id="stats"></ul>
+    <p class="count" id="count">Arrivée à Hanoï le samedi 31 octobre</p>
+  </div>
+  <aside class="panel" id="panel" aria-live="polite"></aside>
+  </div>
+
+  <section class="stage" id="carte" aria-label="Carte du voyage en 3D">
+    <canvas id="gl" aria-hidden="true"></canvas>
+    <div class="pins" id="pins"></div>
+    <div class="legend" aria-hidden="true"><span><i></i>Route</span><span><i class="fly"></i>Avion</span></div>
+    <div class="tools">
+      <button class="tbtn" id="zin" type="button" aria-label="Zoomer">+</button>
+      <button class="tbtn" id="zout" type="button" aria-label="Dézoomer">−</button>
+      <button class="tbtn txt" id="home" type="button">Tout</button>
+    </div>
+    <p class="hint" id="hint">Touchez une ville ou un jour</p>
+    <a class="peek" id="peek" href="#panel" hidden></a>
+    <div class="dock">
+      <button class="play" id="play" type="button" aria-pressed="false"><svg class="icon"><use href="#i-play"/></svg><span>Le voyage</span></button>
+      <div class="days" id="days" role="group" aria-label="Jours du voyage"></div>
+    </div>
+    <p class="nogl" id="nogl" hidden>La carte en 3D ne s'affiche pas sur cet appareil.<br>Tout le programme est juste en dessous.</p>
+  </section>
+</div>
+
+<main>
+  <section class="sec" id="programme">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow" id="progEyebrow">Programme A</p>
+        <h2>Jour par jour, <em>tranquillement</em></h2>
+        <p>Un seul gros moment par jour, des pauses l'après-midi, et des trajets où l'on reste assis. Pendant la croisière et Ninh Bình, on laisse les grosses valises à l'hôtel de Hanoï.</p>
+      </header>
+      <div class="prog-list" id="prog"></div>
+      <p class="depart"><svg class="icon"><use href="#i-plane"/></svg><span><b>Vendredi 13 novembre</b> · vol de Bochra pour la France depuis l'aéroport de Nội Bài.</span></p>
+    </div>
+  </section>
+
+  <section class="sec" id="photos">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow">Les incontournables</p>
+        <h2>Ce qu'on va <em>voir</em></h2>
+        <p>Les lieux possibles et ce qu'il ne faut pas manquer sur place. Les lettres sur les photos indiquent dans quels programmes on y va. Sous chaque lieu, écrivez une idée ou collez un lien : il s'ajoute à votre message pour le groupe.</p>
+      </header>
+      <div class="places" id="places"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="budget">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow">Budget</p>
+        <h2>Combien ça coûte, <em>en gros</em></h2>
+        <p>Par personne, sur place : hôtels, repas, croisière, trajets, activités. Sans les billets d'avion France ↔ Vietnam ni l'appartement de Hanoï, déjà réservé. Choisissez un niveau de confort pour comparer les trois programmes.</p>
+      </header>
+      <div class="seg" role="group" aria-label="Niveau de confort" id="lvl"></div>
+      <div class="tri" id="tri"></div>
+      <div class="bud">
+        <div>
+          <p class="eyebrow" id="budTitle" style="margin-bottom:14px"></p>
+          <ul class="bars" id="bars"></ul>
+          <p class="total"><span>Par personne</span><b id="btotal"></b></p>
+        </div>
+        <div class="aside">
+          <h3>Comment c'est calculé</h3>
+          <ul id="hyp"></ul>
+          <p>Prix relevés le 14 octobre 2026, arrondis. 1 € ≈ 30 000 ₫ et 1 $ ≈ 0,87 €. Les vrais prix bougent un peu selon les dates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="choix">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow">Vos choix</p>
+        <h2>À vous de <em>voter</em></h2>
+        <p>Chacun choisit son programme, son niveau de confort et ce qui lui fait envie, ajoute un commentaire ou un lien, puis envoie le tout dans le groupe WhatsApp. Vos réponses restent sur votre téléphone tant que vous ne les envoyez pas.</p>
+      </header>
+      <div class="form">
+        <div class="step"><h3>1. C'est qui ?</h3><div class="who" id="who"></div></div>
+        <div class="step"><h3>2. Ton programme préféré</h3><div class="opts" id="fprog"></div></div>
+        <div class="step"><h3>3. Ton niveau de confort</h3><div class="opts" id="flvl"></div></div>
+        <div class="step"><h3>4. Ce qui te fait envie <small>Oui ! · Pourquoi pas · Non merci</small></h3><div class="likes" id="flikes"></div></div>
+        <div class="step"><h3>5. Un commentaire, une idée, un lien</h3>
+          <label class="lbl" for="fmot">Ton message libre</label>
+          <textarea class="field" id="fmot" placeholder="Par exemple : « Je préfère un hôtel avec piscine », ou un lien vers une activité vue sur Instagram…"></textarea>
+        </div>
+        <div class="send">
+          <h3>Ton message pour le groupe</h3>
+          <pre id="msg"></pre>
+          <div class="btns">
+            <a class="btn wa" id="waBtn" href="https://wa.me/" target="_blank" rel="noopener"><svg class="icon"><use href="#i-chat"/></svg>Envoyer dans WhatsApp</a>
+            <button class="btn" id="copyBtn" type="button"><svg class="icon"><use href="#i-copy"/></svg>Copier le message</button>
+            <button class="btn save" id="saveBtn" type="button" hidden>Enregistrer dans le tableau</button>
+          </div>
+          <p class="status" id="status" role="status"></p>
+        </div>
+      </div>
+      <div class="board" id="board" hidden>
+        <h3>Le tableau de la famille</h3>
+        <div id="boardBody"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="idees">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow">Vos liens</p>
+        <h2>Les 11 liens du groupe, <em>passés au crible</em></h2>
+        <p>Chaque lien envoyé dans le groupe WhatsApp, comparé avec Klook et les guichets sur place, et vérifié pour que ça reste tranquille pour Mounira.</p>
+      </header>
+      <ul class="tally">
+        <li><b>3</b>gardées telles quelles</li>
+        <li><b>4</b>moins chères en direct</li>
+        <li><b>2</b>rendues plus confortables</li>
+        <li><b>1</b>laissée de côté</li>
+      </ul>
+      <div class="seg" role="group" aria-label="Afficher les prix" id="mult">
+        <button type="button" data-m="1" aria-pressed="true">Par personne</button>
+        <button type="button" data-m="4" aria-pressed="false">Pour nous 4</button>
+      </div>
+      <div class="cmp" id="cmp">
+        <div class="cmp-h" aria-hidden="true"><span>L'idée du groupe</span><span>GetYourGuide</span><span>Ce qu'on fait</span><span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="pratique">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow">Pratique</p>
+        <h2>Ce qu'il faut <em>savoir</em> avant de partir</h2>
+      </header>
+      <h3 class="sub-h" id="trajets">Comment on se déplace · <span id="transTitle"></span></h3>
+      <p class="sub-p">Pour chaque trajet, ce qu'on a choisi et les autres possibilités. Les prix sont par personne.</p>
+      <div class="trans" id="trans"></div>
+      <div class="cards">
+        <article class="card">
+          <h3>Météo et valise</h3>
+          <div class="when">
+            <div><b>Hà Nội, Lan Hạ, Ninh Bình</b><p>19 à 27 °C et temps sec : la meilleure saison au nord.</p></div>
+            <div><b>Sài Gòn, Mékong</b><p>24 à 31 °C, fin de la saison des pluies, quelques averses courtes.</p></div>
+            <div><b>Phú Quốc</b><p>24 à 30 °C, début de la saison sèche : surtout du soleil.</p></div>
+            <div><b>Hội An, Bà Nà</b><p>Le mois le plus pluvieux du centre. K-way, sandales, et une petite veste pour Bà Nà, en altitude.</p></div>
+            <div><b>Sa Pa</b><p>10 à 20 °C, brouillard le matin. Doudoune pour le sommet du Fansipan.</p></div>
+          </div>
+          <p class="tip" style="margin-top:4px"><b>Plan B typhon (programme A).</b> Si une alerte tombe sur Đà Nẵng dans les 48 h, on remplace Hội An par deux jours de plus à Saigon. Les hôtels du centre sont pris en annulation gratuite.</p>
+        </article>
+        <article class="card">
+          <h3>Halal et prière</h3>
+          <dl>
+            <div><dt>Vendredi 6 novembre</dt><dd><span class="hl">Prière du vendredi</span> à Saigon dans le programme B (mosquée de la rue Đông Du) et à Hanoï dans le programme C (mosquée Al-Noor). Dans le programme A, on est à Hội An, sans mosquée confirmée à proximité.</dd></div>
+            <div><dt>Hà Nội</dt><dd>Mosquée Al-Noor, 12 Hàng Lược. Halal Food Hanoi (26 Hàng Buồm, certifié) et Zaynab, à côté de la mosquée.</dd></div>
+            <div><dt>Sài Gòn</dt><dd>Mosquée de la rue Đông Du (66 Đông Du, construite en 1935). Halal@Saigon juste en face, au 31, et The Daun (48 Lê Lai, certifié).</dd></div>
+            <div><dt>Hội An</dt><dd>Maxim Halal, 82 Phan Chu Trinh, au cœur de la vieille ville.</dd></div>
+            <div><dt>Ailleurs</dt><dd>Croisière, excursions, Phú Quốc, Sa Pa : demander un menu poisson ou végétarien en réservant.</dd></div>
+          </dl>
+        </article>
+        <article class="card">
+          <h3>Papiers et argent</h3>
+          <dl>
+            <div><dt>Passeport français</dt><dd>Pas de visa jusqu'à 45 jours. Passeport valable 6 mois après l'arrivée et billet retour.</dd></div>
+            <div><dt>Autre passeport</dt><dd>E-visa uniquement sur le site officiel evisa.gov.vn. Attention aux faux sites qui le revendent plus cher.</dd></div>
+            <div><dt>Argent</dt><dd>Retirer des đồng sur place. Espèces pour les guichets, les barques et les petits restos.</dd></div>
+            <div><dt>Se déplacer en ville</dt><dd>L'appli Grab : le prix est affiché avant de monter, pas de négociation.</dd></div>
+          </dl>
+        </article>
+        <article class="card">
+          <h3>À réserver</h3>
+          <div class="when">
+            <div><b>Dès qu'on a voté</b><p>Les vols intérieurs du programme choisi, avec bagage en soute · la croisière, avec son transfert · les hôtels en annulation gratuite.</p></div>
+            <div><b>Fin octobre</b><p>Les activités GetYourGuide qu'on garde (annulation gratuite jusqu'à 24 h avant) · les voitures avec chauffeur · le bus pour Sa Pa (programme C).</p></div>
+            <div><b>Sur place</b><p>Billets Bà Nà ou Fansipan la veille sur le site officiel, barques de Hội An et Tràng An, Skydeck, marionnettes, cyclo (prix fixé avant de monter).</p></div>
+          </div>
+        </article>
+      </div>
+      <div class="left-out">
+        <div><b>Boucle de Hà Giang</b><p>Des heures de moto sur des routes de montagne : pas pour ce séjour.</p></div>
+        <div><b>Cát Cát (Sa Pa)</b><p>Surtout des escaliers. Même dans le programme C, on ne le fait pas.</p></div>
+        <div><b>Huế</b><p>Très belle, mais en pleine saison des pluies et une étape de plus.</p></div>
+        <div><b>Randonnées</b><p>Aucune. Les 500 marches de Hang Múa restent une option pour ceux qui veulent.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2>D'où viennent les prix</h2>
+    <ul>
+      <li>Fiches GetYourGuide des 10 activités envoyées dans le groupe (prix « à partir de », octobre 2026).</li>
+      <li>Bà Nà Hills : <a href="https://www.trvlogue.com/en/ba-na-hills-danang-tickets">trvlogue.com</a> · voiture depuis Hội An : <a href="https://goodmorning-hoian.com/en/hoi-an-to-bana-hills/">goodmorning-hoian.com</a> · barques de Hội An : <a href="https://www.trvlogue.com/en/hoi-an-lantern-boat-guide">trvlogue.com</a></li>
+      <li>Croisières Lan Hạ : <a href="https://www.vietnamtourism.com/en/lan-ha-bay-cruises-from-hanoi-the-best-1-and-2-night-options-compared">vietnamtourism.com</a> · <a href="https://www.bestpricetravel.com/en-eu/lan-ha-bay-cruises/2-days-1-night">bestpricetravel.com</a></li>
+      <li>Hôtels : <a href="https://www.vietnamtourism.com/en/budget">vietnamtourism.com</a> · <a href="https://www.kayak.co.in/Vietnam-Hotels.259.dc.html">kayak</a></li>
+      <li>Phú Quốc : <a href="https://localvietnam.com/phu-quoc/phu-quoc-november-weather/">météo</a> · <a href="https://thaiest.com/en/vietnam/travel/hon-thom-ticket-price">téléphérique de Hòn Thơm</a> · Fansipan : <a href="https://thaiest.com/en/vietnam/travel/fansipan-cable-car-ticket-price">thaiest.com</a> · bus Sa Pa : <a href="https://www.vietnamtourism.com/en/hanoi-to-sapa-in-2026-trains-buses-costs-compared">vietnamtourism.com</a></li>
+      <li>Ninh Bình : <a href="https://vietnamvacation.com.vn/ninh-binh-entrance-fee/">vietnamvacation.com.vn</a> · vols : <a href="https://airconnect.live/en/routes/DAD-HAN">airconnect.live</a>, <a href="https://www.trip.com/flights/hanoi-to-phu-quoc-island/airfares-han-pqc/">trip.com</a>, <a href="https://www.kiwi.com/us/cheap-flights/hanoi-vietnam/ho-chi-minh-city-vietnam/">kiwi.com</a></li>
+      <li>Hanoï : <a href="https://localvietnam.com/hanoi/hanoi-cyclo/">cyclo</a> · <a href="https://www.vietnamtourism.com/en/temple-of-literature-in-hanoi-tickets-dress-code-and-what-to-look-at">Temple de la Littérature</a> · <a href="https://www.vietnamtourism.com/en/ho-chi-minh-mausoleum-opening-hours-free-entry-and-the-dress-code">mausolée</a> · météo de Hội An : <a href="https://localvietnam.com/quang-nam/hoi-an/hoi-an-november-weather/">localvietnam.com</a></li>
+      <li>Halal : <a href="https://sungetawaystravel.com/halal-food-in-hanoi-restaurants-muslim-tourists/">Hanoï</a> · <a href="https://maximhalal1.odoo.com/about-us-1">Maxim Halal</a> · <a href="https://vietnamisawesome.com/articles/halal-restaurants-in-ho-chi-minh/">Saigon</a> · visa : <a href="https://ulysse.com/news/vietnam-45-jours-sans-visa-guide-francais-2026">ulysse.com</a></li>
+      <li>Contour du pays : Natural Earth.</li>
+    </ul>
+    <h2>Photos</h2>
+    <ul id="credits"></ul>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+"use strict";
+const VN = [[[104.064,10.391],[104.082,10.34],[104.075,10.226],[104.036,10.111],[104.05,10.061],[104.018,10.03],[103.953,10.243],[103.848,10.372],[103.899,10.368],[103.985,10.427],[104.028,10.429],[104.064,10.391]],[[107.974,21.508],[107.808,21.498],[107.708,21.406],[107.409,21.284],[107.355,21.055],[107.164,20.949],[107.11,20.959],[107.074,20.999],[106.887,20.951],[106.682,21.001],[106.674,20.961],[106.754,20.735],[106.552,20.527],[106.574,20.392],[106.52,20.289],[106.397,20.206],[106.167,19.992],[106.062,19.987],[105.983,19.939],[105.814,19.588],[105.81,19.466],[105.785,19.38],[105.792,19.295],[105.717,19.128],[105.638,19.057],[105.623,18.966],[105.89,18.503],[106.066,18.317],[106.239,18.22],[106.498,17.946],[106.458,17.875],[106.48,17.72],[106.354,17.765],[106.516,17.663],[106.736,17.368],[107.121,17.055],[107.182,16.897],[107.355,16.793],[107.549,16.642],[107.542,16.609],[107.592,16.567],[107.726,16.487],[107.805,16.402],[107.834,16.323],[107.88,16.31],[108.028,16.331],[108.208,16.092],[108.266,16.09],[108.287,15.989],[108.395,15.873],[108.446,15.764],[108.579,15.585],[108.672,15.484],[108.82,15.378],[108.899,15.18],[108.939,15.001],[109.022,14.804],[109.086,14.717],[109.086,14.552],[109.191,14.271],[109.223,14.097],[109.302,13.856],[109.288,13.765],[109.248,13.854],[109.252,13.59],[109.288,13.451],[109.27,13.279],[109.31,13.219],[109.378,13.026],[109.425,12.956],[109.421,12.719],[109.446,12.599],[109.335,12.752],[109.22,12.646],[109.306,12.39],[109.205,12.415],[109.216,12.073],[109.259,11.955],[109.248,11.908],[109.22,11.958],[109.216,12.01],[109.198,12.0],[109.158,11.837],[109.198,11.726],[109.133,11.601],[109.04,11.592],[108.986,11.337],[108.82,11.316],[108.701,11.2],[108.55,11.156],[108.273,10.934],[108.096,10.898],[108.003,10.72],[107.844,10.7],[107.564,10.556],[107.47,10.486],[107.261,10.398],[107.193,10.472],[107.088,10.498],[107.034,10.556],[107.006,10.66],[106.984,10.618],[106.948,10.401],[106.901,10.384],[106.811,10.434],[106.728,10.536],[106.606,10.465],[106.743,10.444],[106.779,10.377],[106.757,10.295],[106.466,10.299],[106.728,10.193],[106.786,10.151],[106.786,10.116],[106.66,9.991],[106.656,9.901],[106.595,9.859],[106.448,9.939],[106.138,10.222],[106.185,10.142],[106.509,9.821],[106.563,9.715],[106.574,9.641],[106.484,9.559],[106.379,9.556],[106.203,9.675],[105.926,9.962],[105.832,10.0],[106.113,9.674],[106.16,9.594],[106.206,9.502],[106.167,9.396],[105.501,9.094],[105.4,8.962],[105.321,8.8],[105.191,8.712],[105.116,8.629],[104.892,8.583],[104.77,8.597],[104.896,8.747],[104.817,8.802],[104.813,9.186],[104.846,9.606],[104.903,9.816],[104.986,9.868],[105.094,9.901],[105.094,9.944],[105.083,9.997],[105.029,10.068],[104.964,10.101],[104.874,10.115],[104.802,10.203],[104.662,10.17],[104.612,10.208],[104.594,10.267],[104.428,10.411],[104.468,10.422],[104.565,10.516],[104.849,10.535],[105.047,10.701],[105.062,10.734],[105.022,10.887],[105.047,10.911],[105.159,10.898],[105.314,10.845],[105.407,10.951],[105.756,10.99],[105.854,10.863],[105.936,10.885],[106.098,10.797],[106.163,10.795],[106.131,10.922],[106.167,11.012],[106.16,11.036],[105.893,11.245],[105.857,11.295],[105.854,11.488],[105.836,11.559],[105.85,11.635],[105.926,11.653],[106.005,11.759],[106.102,11.752],[106.34,11.682],[106.401,11.687],[106.415,11.948],[106.7,11.979],[106.764,12.052],[106.93,12.078],[107.211,12.304],[107.33,12.319],[107.394,12.26],[107.506,12.364],[107.538,12.432],[107.556,12.54],[107.542,12.706],[107.481,12.934],[107.474,13.031],[107.607,13.437],[107.592,13.522],[107.391,13.993],[107.362,14.019],[107.33,14.126],[107.366,14.37],[107.448,14.451],[107.535,14.651],[107.513,14.817],[107.524,14.871],[107.481,14.981],[107.495,15.022],[107.556,15.057],[107.654,15.255],[107.564,15.392],[107.279,15.619],[107.168,15.802],[107.189,15.838],[107.391,15.951],[107.409,15.998],[107.398,16.043],[107.218,16.137],[107.07,16.279],[106.93,16.354],[106.894,16.397],[106.851,16.515],[106.833,16.526],[106.739,16.453],[106.696,16.46],[106.656,16.493],[106.595,16.6],[106.545,16.651],[106.527,16.876],[106.502,16.954],[106.426,17.003],[106.271,17.217],[106.005,17.414],[105.692,17.737],[105.627,17.835],[105.587,17.984],[105.458,18.154],[105.335,18.19],[105.162,18.338],[105.087,18.451],[105.087,18.496],[105.148,18.651],[104.993,18.729],[104.716,18.803],[104.108,19.196],[103.917,19.269],[103.892,19.305],[103.895,19.34],[104.028,19.421],[104.064,19.482],[104.014,19.647],[104.032,19.675],[104.259,19.685],[104.547,19.611],[104.586,19.619],[104.745,19.755],[104.802,19.836],[104.846,19.947],[104.928,20.018],[104.928,20.083],[104.889,20.17],[104.849,20.202],[104.813,20.216],[104.698,20.206],[104.676,20.225],[104.655,20.329],[104.619,20.374],[104.367,20.442],[104.406,20.485],[104.532,20.555],[104.576,20.6],[104.583,20.647],[104.349,20.821],[104.194,20.914],[104.1,20.946],[104.054,20.942],[103.881,20.862],[103.791,20.81],[103.715,20.716],[103.636,20.697],[103.463,20.781],[103.211,20.841],[103.103,20.892],[102.851,21.267],[102.887,21.44],[102.948,21.57],[102.948,21.682],[102.916,21.713],[102.844,21.735],[102.815,21.807],[102.797,21.798],[102.772,21.709],[102.74,21.678],[102.696,21.662],[102.66,21.676],[102.581,21.904],[102.488,21.958],[102.444,22.027],[102.182,22.284],[102.128,22.379],[102.236,22.466],[102.405,22.708],[102.47,22.751],[102.83,22.588],[102.934,22.466],[102.981,22.449],[103.136,22.543],[103.139,22.593],[103.301,22.765],[103.326,22.77],[103.492,22.588],[103.524,22.612],[103.571,22.734],[103.622,22.782],[103.913,22.537],[103.942,22.541],[103.992,22.586],[104.054,22.753],[104.144,22.8],[104.212,22.81],[104.298,22.713],[104.37,22.704],[104.525,22.805],[104.687,22.822],[104.795,22.911],[104.828,23.1],[104.864,23.136],[105.188,23.28],[105.274,23.345],[105.44,23.235],[105.494,23.181],[105.548,23.072],[105.692,23.03],[105.843,22.923],[105.962,22.937],[106.001,22.975],[106.149,22.97],[106.185,22.956],[106.25,22.869],[106.278,22.857],[106.541,22.909],[106.779,22.779],[106.703,22.638],[106.635,22.586],[106.581,22.574],[106.552,22.501],[106.538,22.395],[106.552,22.341],[106.635,22.289],[106.653,22.242],[106.664,21.978],[106.728,22.001],[106.926,21.919],[106.97,21.925],[107.063,21.794],[107.178,21.716],[107.272,21.711],[107.351,21.609],[107.434,21.642],[107.47,21.598],[107.639,21.614],[107.758,21.656],[107.801,21.645],[107.974,21.508]],[[107.168,10.398],[107.085,10.337],[107.078,10.387],[107.196,10.446],[107.168,10.398]],[[106.865,20.815],[106.854,20.796],[106.768,20.864],[106.797,20.928],[106.854,20.859],[106.865,20.815]],[[107.603,21.216],[107.459,21.091],[107.405,21.093],[107.477,21.268],[107.603,21.216]],[[107.52,20.926],[107.466,20.9],[107.398,20.904],[107.477,20.952],[107.553,21.034],[107.52,20.926]],[[107.031,20.748],[106.991,20.742],[106.912,20.824],[106.952,20.867],[107.063,20.817],[107.031,20.748]]];
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* ================= photos ================= */
+const PH = {
+  "hanoi-rue-1":{alt:"Une vendeuse de rue dans le vieux quartier de Hanoï",a:"Richard Mortel",l:"CC BY 2.0",u:"https://commons.wikimedia.org/wiki/File:Old_Quarter_street_scene,_Hanoi_(1)_(38464672752).jpg"},
+  "hanoi-lac-0":{alt:"Le pont rouge Thê Húc sur le lac Hoàn Kiếm, la nuit",a:"Jorge Láscar",l:"CC BY 2.0",u:"https://commons.wikimedia.org/wiki/File:Lascar_The_Huc_Bridge_-_Hoan_Kiem_Lake_(4550416275).jpg"},
+  "temple-0":{alt:"La porte du Temple de la Littérature",a:"Jakub Hałun",l:"CC BY 4.0",u:"https://commons.wikimedia.org/wiki/File:Main_gate_of_the_Temple_of_Literature,_Hanoi,_Vietnam,_20240123_0929_3068.jpg"},
+  "hanoi-encens-0":{alt:"Bouquets de bâtons d'encens roses qui sèchent au soleil",a:"Trantuanviet",l:"CC BY-SA 4.0",u:"https://commons.wikimedia.org/wiki/File:Incense_in_Vietnam.jpg"},
+  "lanha-7":{alt:"Les pitons calcaires de la baie de Lan Hạ",a:"Christophe95",l:"CC BY-SA 4.0",u:"https://commons.wikimedia.org/wiki/File:Lan_Ha_Bay_20.jpg"},
+  "halong-3":{alt:"Une jonque de croisière dans la baie d'Along",a:"Arianos",l:"Domaine public",u:"https://commons.wikimedia.org/wiki/File:Asia_Cruise_Junk_in_Halong_bay.JPG"},
+  "ninhbinh-3":{alt:"Les barques à rames de Tràng An",a:"Jakub Hałun",l:"CC BY 4.0",u:"https://commons.wikimedia.org/wiki/File:Tour_boats_at_Trang_An_Landscape_Complex,_Ninh_Binh_Province,_Vietnam,_20240202_1446_5308.jpg"},
+  "ninhbinh-0":{alt:"La rivière de Tràng An entre les falaises",a:"Jakub Hałun",l:"CC BY 4.0",u:"https://commons.wikimedia.org/wiki/File:Trang_An_Landscape_Complex,_Ninh_Binh_Province,_Vietnam,_20240202_1456_5313.jpg"},
+  "saigon-6":{alt:"Saigon la nuit, vue d'en haut",a:"MB-one",l:"CC BY-SA 4.0",u:"https://commons.wikimedia.org/wiki/File:Skyline,_Ho_Chi_Minh_(LRM_20230826_210221_Pano).jpg"},
+  "saigon-poste-4":{alt:"La poste centrale de Saigon",a:"Diego Delso",l:"CC BY-SA 3.0",u:"https://commons.wikimedia.org/wiki/File:Oficina_Central_de_Correos,_Ciudad_Ho_Chi_Minh,_Vietnam,_2013-08-14,_DD_06.JPG"},
+  "mekong-0":{alt:"Un bateau chargé de noix de coco sur le Mékong",a:"Dirk Tussing",l:"CC BY-SA 2.0",u:"https://commons.wikimedia.org/wiki/File:Coconuts_on_a_boat_Vietnam.jpg"},
+  "hoian-1":{alt:"Une rue de Hội An éclairée de lanternes",a:"Christophe95",l:"CC BY-SA 4.0",u:"https://commons.wikimedia.org/wiki/File:Lanterns_in_Hoi_An_3.jpg"},
+  "bana-0":{alt:"Le Pont d'Or tenu par deux mains de pierre",a:"DvTor8303",l:"CC0",u:"https://commons.wikimedia.org/wiki/File:Golden_Bridge_at_Ba_Na_Hills_20250718.jpg"},
+  "phuquoc-7":{alt:"La plage de Bãi Sao à Phú Quốc",a:"Trantuonglam",l:"CC BY-SA 4.0",u:"https://commons.wikimedia.org/wiki/File:Bai-sao-phu-quoc-tuonglamphotos.jpg"},
+  "honthom-6":{alt:"Le téléphérique de Hòn Thơm au-dessus de la mer",a:"Vivu Vietnam",l:"CC BY-SA 4.0",u:"https://commons.wikimedia.org/wiki/File:Cap-treo-hon-thom-qua-thi-tran.jpg"},
+  "sapa-3":{alt:"Les rizières en terrasses de Sa Pa",a:"Christophe95",l:"CC BY-SA 4.0",u:"https://commons.wikimedia.org/wiki/File:Rice_terraces_in_Sa_Pa_02.jpg"}
+};
+const img = k => `img/${k}.jpg`;
+
+/* ================= lieux ================= */
+const STOPS = {
+  hanoi:{name:"Hà Nội",fr:"Hanoï, la capitale",lat:21.0285,lon:105.8542,side:"l",dy:-13,photos:["hanoi-rue-1","hanoi-lac-0","temple-0","hanoi-encens-0"],
+    weather:"19 à 27 °C, temps sec : la meilleure saison.",
+    blurb:"La ville où habite Hilal. Les trois premiers jours, on loge tous ensemble dans l'appartement. Le vieux quartier et ses rues de métiers, le lac Hoàn Kiếm, et la meilleure cuisine de rue du pays.",
+    must:["Le lac Hoàn Kiếm et son pont rouge, le soir","Le vieux quartier en cyclo-pousse, assis","Le Temple de la Littérature","Le village de l'encens et ses bouquets roses","Les marionnettes sur l'eau"],
+    tip:"Pendant la croisière et Ninh Bình, on laisse les grosses valises à l'hôtel de Hanoï : on part avec un petit sac."},
+  saigon:{name:"Sài Gòn",fr:"Hô Chi Minh-Ville",lat:10.7769,lon:106.7009,side:"r",dy:-4,photos:["saigon-6","saigon-poste-4"],
+    weather:"24 à 31 °C, quelques averses courtes.",
+    blurb:"La grande ville du sud, chaude et pleine d'énergie : bâtiments de l'époque française, marchés, et la ville vue d'en haut le soir.",
+    must:["La poste centrale et sa grande halle","Le marché Bến Thành","Une heure sur la rivière au coucher du soleil","Saigon illuminée depuis le Skydeck"],
+    tip:"Il fait chaud : on sort le matin et en fin de journée, pause à l'hôtel entre les deux."},
+  mekong:{name:"Mékong",fr:"Mỹ Tho et Bến Tre",lat:10.33,lon:106.36,side:"l",dy:12,minor:true,parent:"saigon",photos:["mekong-0"],
+    weather:"Chaud et humide, averses possibles.",
+    blurb:"Le grenier à riz du pays : des îles couvertes de vergers, des canaux bordés de cocotiers et la vie qui se passe sur l'eau.",
+    must:["Le bateau entre les îles du fleuve","La petite barque sous les cocotiers","Les bonbons à la noix de coco, faits devant nous","Les fruits du verger et le thé au miel"],
+    tip:"Le déjeuner du circuit n'est pas halal : demander le poisson (cá tai tượng, la spécialité) ou un plat végétarien."},
+  hoian:{name:"Hội An",fr:"et Đà Nẵng, sur la côte du centre",lat:15.8801,lon:108.338,side:"r",dy:4,photos:["hoian-1"],
+    weather:"Mois le plus pluvieux : K-way et sandales.",
+    blurb:"La petite ville aux lanternes, classée à l'UNESCO. Toute plate et piétonne, parfaite pour flâner. L'aéroport de Đà Nẵng est à 45 minutes.",
+    must:["La vieille ville quand les lanternes s'allument","Le pont couvert japonais","Les petites lanternes posées sur la rivière","Un vêtement sur mesure chez un tailleur, prêt en un ou deux jours"],
+    tip:"Plan B typhon : si une alerte tombe dans les 48 h, on reste deux jours de plus à Saigon à la place."},
+  bana:{name:"Bà Nà Hills",fr:"Le Pont d'Or, dans les nuages",lat:15.997,lon:107.988,side:"l",dy:-6,minor:true,parent:"hoian",photos:["bana-0"],
+    weather:"Plus frais, à 1 500 m : une petite veste.",
+    blurb:"Un parc perché sur la montagne, où l'on monte en téléphérique. Le Pont d'Or tenu par deux mains de pierre, un village de style français et des jardins.",
+    must:["Le Pont d'Or et ses deux mains géantes","Le téléphérique au-dessus de la forêt","Le village de style français"],
+    tip:"Le billet officiel coûte 1 000 000 ₫ (≈ 33 €), 800 000 ₫ pour les plus de 70 ans."},
+  phuquoc:{name:"Phú Quốc",fr:"L'île aux plages",lat:10.22,lon:103.97,side:"l",dy:0,photos:["phuquoc-7","honthom-6"],
+    weather:"24 à 30 °C, début de la saison sèche.",
+    blurb:"La grande île du sud, dans le golfe de Thaïlande. Sable blanc, eau turquoise et couchers de soleil sur la mer : de quoi se reposer au milieu du voyage.",
+    must:["La plage de Bãi Sao, sable blanc et eau calme","Le téléphérique de Hòn Thơm, près de 8 km au-dessus de la mer","Le coucher du soleil sur la côte ouest","Le marché de nuit et ses fruits de mer"],
+    tip:"Billet du téléphérique de Hòn Thơm : environ 850 000 ₫ (≈ 28 €) aller-retour."},
+  sapa:{name:"Sa Pa",fr:"Les montagnes du Nord",lat:22.336,lon:103.844,side:"l",dy:-6,photos:["sapa-3"],
+    weather:"10 à 20 °C, brouillard le matin, froid au sommet.",
+    blurb:"Les rizières en terrasses et le Fansipan, plus haut sommet d'Indochine (3 143 m), que l'on atteint en train, en téléphérique et en funiculaire, sans marcher.",
+    must:["Le Fansipan en téléphérique, au-dessus des nuages","Les rizières en terrasses de la vallée","Les terrasses fleuries de Moana face aux montagnes"],
+    tip:"Doudoune et bonnet pour le sommet du Fansipan, même en novembre."},
+  lanha:{name:"Baie de Lan Hạ",fr:"La voisine calme de la baie d'Along",lat:20.74,lon:107.1,side:"r",dy:-8,water:true,photos:["lanha-7","halong-3"],
+    weather:"Doux, un peu frais le soir sur le pont.",
+    blurb:"Les mêmes pitons calcaires qui sortent de l'eau qu'à Along, avec beaucoup moins de bateaux. On y dort à bord pour profiter du coucher et du lever du soleil.",
+    must:["Des centaines de pitons calcaires au milieu de l'eau","La barque de bambou entre les rochers","Le coucher et le lever du soleil depuis le pont"],
+    tip:"Demander un menu poisson ou végétarien en réservant la croisière."},
+  ninhbinh:{name:"Ninh Bình",fr:"La baie d'Along terrestre",lat:20.24,lon:105.93,side:"l",dy:14,photos:["ninhbinh-3","ninhbinh-0"],
+    weather:"19 à 27 °C, temps sec.",
+    blurb:"Des rizières et des rivières au pied de falaises de calcaire. Tout se visite assis, en barque à rames : le plus beau paysage du nord sans se fatiguer.",
+    must:["Tràng An en barque, à travers les grottes","Hoa Lư, l'ancienne capitale","La pagode Bái Đính en voiturette électrique","Hang Múa au coucher du soleil, pour les courageux"],
+    tip:"Au guichet de Tràng An, on peut prendre une barque privée pour nous 4 (≈ 1 250 000 ₫) : on part quand on veut."}
+};
+const ORDER = ["hanoi","sapa","lanha","ninhbinh","hoian","bana","saigon","mekong","phuquoc"];
+const PLACE_ORDER = ["hanoi","lanha","ninhbinh","saigon","mekong","hoian","bana","phuquoc","sapa"];
+
+/* ================= jours ================= */
+const S = (a, b) => [a, b];
+const START = [
+  {n:1,stop:"hanoi",title:"Arrivée en douceur",pace:1,
+    slots:[S("Matin","Arrivée à l'aéroport de Nội Bài, voiture jusqu'à l'appartement."),S("Après-midi","Sieste : on récupère du vol, rien de prévu."),S("Soir","Le week-end, les rues autour du lac Hoàn Kiếm deviennent piétonnes. Petite balade jusqu'au pont rouge, premier dîner halal rue Hàng Buồm.")]},
+  {n:2,stop:"hanoi",title:"Hanoï en cyclo",pace:2,
+    slots:[S("Matin","Tour du vieux quartier en cyclo-pousse : on est assis, le chauffeur pédale. Puis le Temple de la Littérature, la première université du pays."),S("Après-midi","Repos à l'appartement."),S("Soir","Spectacle de marionnettes sur l'eau au théâtre Thăng Long : une heure, assis.")]},
+  {n:3,stop:"hanoi",title:"Encens et chapeaux coniques",pace:1,
+    slots:[S("Matin","Village de l'encens Quảng Phú Cầu et ses bouquets roses, puis village des chapeaux coniques, en petit groupe et en minibus."),S("Après-midi","Repos, on prépare les sacs pour la suite."),S("Soir","Dîner dans les adresses préférées de Hilal.")]}
+];
+const MEKONG = n => ({n,stop:"mekong",base:"saigon",title:"La vie sur le Mékong",pace:2,
+  leg:{from:"saigon",to:"mekong",mode:"road",round:true,txt:"Route Sài Gòn ↔ Mỹ Tho · ≈ 2 h"},
+  slots:[S("Journée","Bateau entre les îles, atelier de bonbons à la noix de coco, petite barque sur les canaux sous les cocotiers, fruits et thé au miel, musique traditionnelle."),S("Soir","Retour vers 17 h, dîner tranquille.")],
+  note:"On est assis presque toute la journée : minibus, bateau, barque."});
+const BACK = (from, txt) => ({n:8,stop:"hanoi",title:"Retour au nord",pace:1,leg:{from,to:"hanoi",mode:"fly",txt},
+  slots:[S("Matin","Vol pour Hanoï, installation à l'hôtel."),S("Après-midi","Repos."),S("Soir","Samedi soir : rue piétonne autour du lac, glace à la noix de coco.")]});
+const FIN = [
+  {n:9,stop:"lanha",title:"Une nuit sur l'eau",pace:1,leg:{from:"hanoi",to:"lanha",mode:"road",txt:"Route Hà Nội → port · ≈ 2 h 30"},
+    slots:[S("Matin","On laisse les grosses valises à l'hôtel. Navette jusqu'au port."),S("Après-midi","Déjeuner à bord pendant que le bateau glisse entre les pitons. Barque de bambou (on est assis, quelqu'un rame) ou kayak pour ceux qui veulent."),S("Soir","Coucher de soleil sur le pont, dîner, nuit en cabine.")]},
+  {n:10,stop:"ninhbinh",title:"De la mer aux rizières",pace:1,leg:{from:"lanha",to:"ninhbinh",mode:"road",txt:"Route port → Ninh Bình · ≈ 3 h"},
+    slots:[S("Matin","Lever de soleil sur la baie, brunch à bord, retour au port vers 11 h."),S("Après-midi","Route vers Ninh Bình, installation dans un hôtel avec piscine au milieu des rizières."),S("Soir","Dîner à l'hôtel, repos.")]},
+  {n:11,stop:"ninhbinh",title:"Tràng An en barque",pace:2,
+    slots:[S("Matin","Barque privée pour nous 4 à Tràng An, environ 2 h : rivières, grottes et petits temples au pied des falaises. On reste assis, la rameuse fait tout."),S("Midi","Hoa Lư, l'ancienne capitale, juste à côté : visite courte et plate."),S("Après-midi","Repos à l'hôtel."),S("Soir","Option pour les courageux : Hang Múa au coucher du soleil (500 marches). Mounira peut nous attendre en bas, au bord de l'étang aux lotus.")]},
+  {n:12,stop:"hanoi",title:"Retour à Hanoï",pace:1,leg:{from:"ninhbinh",to:"hanoi",mode:"road",txt:"Route Ninh Bình → Hà Nội · ≈ 2 h"},
+    slots:[S("Matin","Pagode Bái Đính, la plus grande du pays, visitée en voiturette électrique. Ou matinée à la piscine, au choix."),S("Après-midi","Voiture pour Hanoï, on récupère les valises."),S("Soir","Dîner dans le vieux quartier.")]},
+  {n:13,stop:"hanoi",title:"Dernière journée ensemble",pace:1,
+    slots:[S("Matin","Si on en a envie : mausolée de Hô Chi Minh et pagode au pilier unique, ouverts le jeudi matin."),S("Après-midi","Achats : soie rue Hàng Gai, café et thé à rapporter. On prépare les valises."),S("Soir","Dîner d'au revoir.")]}
+];
+
+const PROGS = {
+  a:{letter:"A",name:"L'essentiel",sub:"Saigon, Mékong, Hội An, Pont d'Or",
+    pitch:"Le plus complet : après Hanoï, le sud et le centre, puis la baie et Ninh Bình.",
+    plus:["Les trois régions du pays","Presque tous vos liens"],moins:["Pluie possible au centre","3 vols intérieurs"],
+    flights:3,cost:{flights:150,transfers:50,activities:131},
+    days:[...START,
+      {n:4,stop:"saigon",title:"Cap au sud",pace:2,leg:{from:"hanoi",to:"saigon",mode:"fly",txt:"Vol Hà Nội → Sài Gòn · 2 h 10"},
+        slots:[S("Matin","Vol pour Sài Gòn."),S("Après-midi","Installation, puis poste centrale et marché Bến Thành, en Grab."),S("Soir","Croisière d'une heure sur la rivière au coucher du soleil, puis Saigon vue d'en haut depuis le Skydeck, juste à côté. Dîner halal rue Đông Du.")]},
+      MEKONG(5),
+      {n:6,stop:"hoian",title:"La ville des lanternes",pace:2,leg:{from:"saigon",to:"hoian",mode:"fly",txt:"Vol Sài Gòn → Đà Nẵng · 1 h 25, puis 45 min de route"},
+        slots:[S("Matin","Vol pour Đà Nẵng, voiture jusqu'à Hội An."),S("Après-midi","Installation et repos."),S("Soir","Vieille ville quand les lanternes s'allument, pont couvert japonais, puis barque sur la rivière et petites lanternes posées sur l'eau.")]},
+      {n:7,stop:"bana",base:"hoian",title:"Le Pont d'Or dans les nuages",pace:2,leg:{from:"hoian",to:"bana",mode:"road",round:true,txt:"Route Hội An ↔ Bà Nà · ≈ 1 h 15"},
+        slots:[S("Matin","Départ 7 h 30 en voiture privée pour arriver à l'ouverture, avant la foule. Téléphérique, Pont d'Or, village français."),S("Après-midi","Retour à Hội An vers 15 h. Repos, ou essayage chez un tailleur.")],
+        note:"On monte en téléphérique et en funiculaire, il y a des bancs partout : on marche à notre rythme."},
+      BACK("hoian","Vol Đà Nẵng → Hà Nội · 1 h 20"), ...FIN]},
+  b:{letter:"B",name:"Soleil et plage",sub:"Phú Quốc, Saigon",
+    pitch:"Deux jours de plage au soleil, puis Saigon, en évitant la pluie du centre.",
+    plus:["Le plus reposant","Prière du vendredi à Saigon"],moins:["Ni Mékong, ni Hội An, ni Pont d'Or","3 vols intérieurs"],
+    flights:3,cost:{flights:190,transfers:50,activities:94},
+    days:[...START,
+      {n:4,stop:"phuquoc",title:"Cap sur l'île",pace:1,leg:{from:"hanoi",to:"phuquoc",mode:"fly",txt:"Vol Hà Nội → Phú Quốc · 2 h 05"},
+        slots:[S("Matin","Vol pour Phú Quốc."),S("Après-midi","Installation dans un hôtel au bord de la plage, baignade."),S("Soir","Coucher du soleil sur la mer, côté ouest de l'île.")]},
+      {n:5,stop:"phuquoc",title:"Au-dessus de la mer",pace:1,
+        slots:[S("Matin","Téléphérique de Hòn Thơm : près de 8 km au-dessus des îles du sud, puis plage sur l'île."),S("Après-midi","Repos à l'hôtel, piscine."),S("Soir","Marché de nuit de Dương Đông, poissons et fruits de mer grillés.")]},
+      {n:6,stop:"saigon",title:"Saigon au coucher du soleil",pace:1,leg:{from:"phuquoc",to:"saigon",mode:"fly",txt:"Vol Phú Quốc → Sài Gòn · 1 h 05"},
+        slots:[S("Matin","Dernière baignade à la plage de Bãi Sao, sable blanc et eau turquoise."),S("Après-midi","Vol pour Sài Gòn, installation."),S("Soir","Croisière d'une heure sur la rivière au coucher du soleil. Dîner halal rue Đông Du.")]},
+      {n:7,stop:"saigon",title:"Saigon côté ville",pace:1,
+        slots:[S("Matin","Poste centrale, cathédrale (de l'extérieur), marché Bến Thành, en Grab."),S("Midi","Prière du vendredi à la mosquée de la rue Đông Du, déjeuner halal juste en face."),S("Après-midi","Pause à l'hôtel pendant la chaleur."),S("Soir","Saigon vue d'en haut depuis le Skydeck de la tour Bitexco.")]},
+      BACK("saigon","Vol Sài Gòn → Hà Nội · 2 h 10"), ...FIN]},
+  c:{letter:"C",name:"Le Nord en grand",sub:"Sa Pa, Fansipan, sans avion",
+    pitch:"Les montagnes de Sa Pa, plus de temps à Ninh Bình et à Hanoï, et aucun avion.",
+    plus:["Aucun vol intérieur","Le moins cher"],moins:["12 h de bus aller-retour","Ni le sud, ni le centre"],
+    flights:0,cost:{flights:0,transfers:65,activities:97},
+    days:[...START,
+      {n:4,stop:"sapa",title:"Cap sur les montagnes",pace:2,leg:{from:"hanoi",to:"sapa",mode:"road",txt:"Bus limousine Hà Nội → Sa Pa · ≈ 6 h"},
+        slots:[S("Matin","Départ 7 h en bus limousine : sièges larges et inclinables."),S("Après-midi","Arrivée, installation, repos."),S("Soir","Tour du lac de Sa Pa, il fait frais.")]},
+      {n:5,stop:"sapa",title:"Le toit de l'Indochine",pace:2,
+        slots:[S("Matin","Fansipan, 3 143 m : petit train, téléphérique puis funiculaire, avec la vallée en dessous. Pas de marche."),S("Après-midi","Moana Sa Pa : terrasses fleuries face aux montagnes, courte balade."),S("Soir","Dîner au chaud.")],
+        note:"Doudoune et bonnet pour le sommet : il y fait souvent moins de 10 °C."},
+      {n:6,stop:"hanoi",title:"Retour à Hanoï",pace:2,leg:{from:"sapa",to:"hanoi",mode:"road",txt:"Bus limousine Sa Pa → Hà Nội · ≈ 6 h"},
+        slots:[S("Matin","Dernier café face à la vallée."),S("Après-midi","Bus limousine pour Hanoï."),S("Soir","Dîner tranquille, nuit à l'hôtel.")]},
+      {n:7,stop:"hanoi",title:"Vendredi à Hanoï",pace:1,
+        slots:[S("Matin","Grasse matinée."),S("Midi","Prière du vendredi à la mosquée Al-Noor (12 Hàng Lược), déjeuner halal juste à côté."),S("Après-midi","Repos."),S("Soir","Coucher de soleil sur le lac de l'Ouest et la pagode Trấn Quốc.")]},
+      {n:8,stop:"ninhbinh",title:"Tràng An en barque",pace:2,leg:{from:"hanoi",to:"ninhbinh",mode:"road",txt:"Route Hà Nội → Ninh Bình · ≈ 2 h"},
+        slots:[S("Matin","Voiture pour Ninh Bình, on laisse les grosses valises à l'hôtel de Hanoï."),S("Après-midi","Barque privée pour nous 4 à Tràng An, environ 2 h, assis entre les falaises."),S("Soir","Hôtel avec piscine au milieu des rizières.")]},
+      {n:9,stop:"ninhbinh",title:"Hoa Lư et Bái Đính",pace:1,
+        slots:[S("Matin","Hoa Lư, l'ancienne capitale, puis la pagode Bái Đính en voiturette électrique."),S("Après-midi","Repos à l'hôtel."),S("Soir","Option pour les courageux : Hang Múa au coucher du soleil (500 marches). Mounira peut nous attendre en bas, au bord de l'étang aux lotus.")]},
+      {n:10,stop:"lanha",title:"Une nuit sur l'eau",pace:1,leg:{from:"ninhbinh",to:"lanha",mode:"road",txt:"Route Ninh Bình → port · ≈ 3 h"},
+        slots:[S("Matin","Navette de l'hôtel jusqu'au port."),S("Après-midi","Déjeuner à bord entre les pitons, barque de bambou ou kayak."),S("Soir","Coucher de soleil sur le pont, nuit en cabine.")]},
+      {n:11,stop:"hanoi",title:"Réveil dans la baie",pace:1,leg:{from:"lanha",to:"hanoi",mode:"road",txt:"Route port → Hà Nội · ≈ 2 h 30"},
+        slots:[S("Matin","Lever de soleil sur la baie, brunch à bord."),S("Après-midi","Retour à Hanoï, on récupère les valises."),S("Soir","Dîner dans le vieux quartier.")]},
+      {n:12,stop:"hanoi",title:"Journée libre à Hanoï",pace:1,
+        slots:[S("Matin","Si on en a envie : mausolée de Hô Chi Minh et pagode au pilier unique, ouverts le mercredi matin."),S("Après-midi","Achats : soie rue Hàng Gai, café et thé à rapporter."),S("Soir","Dîner tranquille.")]},
+      {n:13,stop:"hanoi",title:"Dernière journée ensemble",pace:1,
+        slots:[S("Matin","Matinée libre, on prépare les valises."),S("Après-midi","Dernière balade au bord du lac Hoàn Kiếm."),S("Soir","Dîner d'au revoir.")]}
+    ]}
+};
+const DATES = ["31 oct.","1er nov.","2 nov.","3 nov.","4 nov.","5 nov.","6 nov.","7 nov.","8 nov.","9 nov.","10 nov.","11 nov.","12 nov."];
+const DOWS = ["Sam.","Dim.","Lun.","Mar.","Mer.","Jeu.","Ven.","Sam.","Dim.","Lun.","Mar.","Mer.","Jeu."];
+
+const LEVELS = {
+  malin:{label:"Malin",sub:"Bons hôtels 3★, croisière simple",room:40,cruise:115,meal:12,fly:1,tr:1},
+  confort:{label:"Confort",sub:"Hôtels 4★, bonne croisière",room:70,cruise:160,meal:20,fly:1,tr:1},
+  plaisir:{label:"Plaisir",sub:"Hôtels 5★, cabine avec balcon",room:140,cruise:260,meal:35,fly:1.3,tr:1.5}
+};
+
+/* autres façons de faire chaque trajet : [mode, comment, durée, prix par personne, notre choix ?, remarque] */
+const TRANS = {
+  "hanoi>saigon":[["fly","Avion direct","2 h 10","≈ 55 à 65 €",1],["train","Train couchette","plus de 30 h","",0,"Beaucoup trop long."]],
+  "saigon>hanoi":[["fly","Avion direct","2 h 10","≈ 55 à 65 €",1],["train","Train couchette","plus de 30 h","",0,"Beaucoup trop long."]],
+  "saigon>hoian":[["fly","Avion jusqu'à Đà Nẵng, puis 45 min de voiture","1 h 25","≈ 35 à 45 €",1],["train","Train couchette jusqu'à Đà Nẵng","17 à 20 h","≈ 25 à 55 €",0,"Une nuit et une demi-journée dans le train."]],
+  "hoian>hanoi":[["fly","Avion depuis Đà Nẵng","1 h 20","≈ 30 à 40 €",1],["train","Train couchette de nuit, une cabine de 4 rien que pour nous","≈ 16 h","≈ 35 à 55 €",0,"On dort dans le train et on économise une nuit d'hôtel, mais on arrive fatigués."]],
+  "hanoi>phuquoc":[["fly","Avion direct","2 h 05","≈ 60 à 90 €",1],["boat","Pas d'autre solution raisonnable","","",0,"Ni train ni route : il faudrait passer par Saigon puis prendre un bateau."]],
+  "phuquoc>saigon":[["fly","Avion","1 h 05","≈ 30 à 45 €",1],["boat","Bateau jusqu'à Rạch Giá, puis bus","≈ 10 h","≈ 20 à 25 €",0,"Moins cher, mais toute une journée de transport."]],
+  "hanoi>sapa":[["bus","Bus limousine, sièges larges et inclinables","≈ 6 h","≈ 13 à 18 €",1],["train","Train de nuit jusqu'à Lào Cai (cabine de 4 rien que pour nous), puis 1 h de minibus","≈ 8 h + 1 h","≈ 21 à 33 €",0,"On dort pendant le trajet et on arrive le matin : une journée de gagnée."],["car","Voiture privée avec chauffeur","≈ 5 h 30","plus cher",0]],
+  "sapa>hanoi":[["bus","Bus limousine, sièges larges et inclinables","≈ 6 h","≈ 13 à 18 €",1],["train","Minibus jusqu'à Lào Cai, puis train de nuit (cabine de 4)","1 h + ≈ 8 h","≈ 21 à 33 €",0,"On profite de Sa Pa jusqu'au soir et on dort dans le train."],["car","Voiture privée avec chauffeur","≈ 5 h 30","plus cher",0]],
+  "hanoi>lanha":[["bus","Navette de la croisière, de l'hôtel au port","≈ 2 h 30","comprise",1],["car","Voiture privée","≈ 2 h 30","en plus",0]],
+  "lanha>ninhbinh":[["car","Voiture privée pour nous 4","≈ 3 h","≈ 15 à 20 €",1],["bus","Navette limousine partagée","≈ 3 h 30","≈ 12 à 15 €",0,"Un peu moins cher, horaires fixes."]],
+  "ninhbinh>lanha":[["car","Voiture privée pour nous 4","≈ 3 h","≈ 15 à 20 €",1],["bus","Navette limousine partagée","≈ 3 h 30","≈ 12 à 15 €",0,"Un peu moins cher, horaires fixes."]],
+  "ninhbinh>hanoi":[["car","Voiture privée pour nous 4","≈ 2 h","≈ 12 €",1],["train","Train","2 h à 2 h 30","≈ 4 à 7 €",0,"Le moins cher, mais il faut aller à la gare avec les sacs."],["bus","Bus limousine","≈ 2 h","≈ 6 €",0]],
+  "hanoi>ninhbinh":[["car","Voiture privée pour nous 4","≈ 2 h","≈ 12 €",1],["train","Train","2 h à 2 h 30","≈ 4 à 7 €",0,"Le moins cher, mais il faut aller à la gare avec les sacs."],["bus","Bus limousine","≈ 2 h","≈ 6 €",0]],
+  "lanha>hanoi":[["bus","Navette de la croisière","≈ 2 h 30","comprise",1]],
+  "saigon>mekong":[["bus","Minibus de l'excursion","≈ 2 h","compris",1],["car","Excursion privée en voiture","≈ 2 h","≈ 70 €",0,"Plus souple, mais 5 fois plus cher."]],
+  "hoian>bana":[["car","Voiture privée pour nous 4, aller-retour","≈ 1 h 15","≈ 10 €",1],["bus","Navette partagée depuis Hội An","≈ 1 h 15","≈ 13 €",0,"Plus chère que la voiture à 4, et retour imposé vers 16 h."]]
+};
+const MODE = {fly:["i-plane","Avion"], train:["i-train","Train"], bus:["i-bus","Bus"], car:["i-car","Voiture"], boat:["i-boat","Bateau"]};
+const HOTEL_NIGHTS = 9;
+
+const LIKES = [
+  ["croisiere","Une nuit à bord dans la baie de Lan Hạ","abc"],
+  ["trangan","La barque à Tràng An (Ninh Bình)","abc"],
+  ["hangmua","Hang Múa au coucher du soleil (500 marches)","abc"],
+  ["encens","Le village de l'encens et des chapeaux","abc"],
+  ["cyclo","Le vieux quartier de Hanoï en cyclo","abc"],
+  ["marionnettes","Les marionnettes sur l'eau","abc"],
+  ["mausolee","Le mausolée de Hô Chi Minh","abc"],
+  ["saigon","Saigon le soir : croisière et vue d'en haut","ab"],
+  ["mekong","Le delta du Mékong","a"],
+  ["hoian","Les lanternes de Hội An","a"],
+  ["bana","Le Pont d'Or à Bà Nà Hills","a"],
+  ["plage","La plage et le téléphérique de Phú Quốc","b"],
+  ["fansipan","Le Fansipan et les rizières de Sa Pa","c"]
+];
+const PEOPLE = ["Ahmed","Mounira","Bochra","Hilal"];
+
+const IDEAS = [
+  {k:"up",place:"Baie d'Along",what:"Journée en croisière de luxe, buffet à bord",link:"https://gyg.me/YiHS2TCU",gyg:38,gygNote:"journée de 12 h depuis Hanoï",
+    ours:"Une nuit à bord dans la baie de Lan Hạ, repas compris (les 3 programmes)",our:160,ourNote:"115 à 260 € selon le niveau de confort",
+    why:"La journée, c'est 5 h de route aller-retour pour 4 h sur l'eau. Avec une nuit à bord, on se repose et on voit le coucher et le lever du soleil.",d:-122},
+  {k:"soft",place:"Ninh Bình",what:"Tràng An, Bái Đính, Hoa Lư et Hang Múa au coucher du soleil",link:"https://gyg.me/IeSuvZrh",gyg:45,gygNote:"journée de 12 h depuis Hanoï",
+    ours:"Deux nuits sur place, barque privée pour nous 4, visites le matin (les 3 programmes)",our:20,ourNote:"sans l'hôtel",
+    why:"Plus de journée marathon : on visite le matin et on se repose l'après-midi. Les 500 marches de Hang Múa restent en option."},
+  {k:"cheap",place:"Bà Nà Hills",what:"Pont d'Or et village français, journée depuis Hội An",extra:"et le réel Instagram",link:"https://gyg.me/P614MNgS",gyg:57,
+    ours:"Programme A : billet officiel et voiture privée aller-retour, partagée à 4",our:43,ourNote:"1 000 000 ₫ le billet + ≈ 1 200 000 ₫ la voiture",
+    why:"On part quand on veut, et on redescend dès qu'on est fatigués.",d:14},
+  {k:"cheap",place:"Sa Pa",what:"Cát Cát, Moana, téléphérique du Fansipan, luge",link:"https://gyg.me/hHN5JLOv",gyg:76,gygNote:"28 € + billets Fansipan en plus",
+    ours:"Programme C : billets Fansipan et Moana en direct, taxi sur place, sans Cát Cát",our:50,ourNote:"≈ 1 300 000 ₫ pour le Fansipan aller-retour",
+    why:"Cát Cát, c'est surtout des escaliers : on garde le Fansipan et Moana, accessibles sans marcher.",d:26},
+  {k:"cheap",place:"Hội An",what:"Barque de nuit et lanternes sur la rivière Hoài",link:"https://gyg.me/fM6EAlHa",gyg:7,
+    ours:"Programme A : barque prise au guichet officiel, sur le quai",our:3,ourNote:"220 000 ₫ la barque pour 4 ou 5, plus les lanternes",
+    why:"Exactement le même bateau, sans intermédiaire.",d:4.25},
+  {k:"cheap",place:"Sài Gòn",what:"Skydeck de la tour Bitexco, billet coupe-file",link:"https://gyg.me/qgT6eDIF",gyg:9,
+    ours:"Programmes A et B : billet au guichet, le soir même",our:8,ourNote:"240 000 ₫",
+    why:"Même vue, presque même prix : pas besoin de réserver.",d:1},
+  {k:"keep",place:"Hà Nội",what:"Village de l'encens et des chapeaux coniques, petit groupe",link:"https://gyg.me/vBtOwQZn",gyg:12,
+    why:"Déjà le meilleur prix, minibus et guide compris. Le lundi 2 novembre, dans les 3 programmes."},
+  {k:"keep",place:"Sài Gòn",what:"Croisière boutique d'une heure sur la rivière",link:"https://gyg.me/cYYovlML",gyg:11,
+    why:"Bateau couvert avec toilettes, une heure seulement. Programmes A et B."},
+  {k:"keep",place:"Delta du Mékong",what:"Mỹ Tho, Bến Tre et le village des cocotiers",link:"https://gyg.me/ycYVg7je",gyg:15,
+    why:"Imbattable à ce prix, et on reste assis presque toute la journée. Programme A."},
+  {k:"skip",place:"Sa Pa",what:"Pont de verre et cascade d'Argent",link:"https://gyg.me/WHLzBL6s",gyg:50,gygNote:"33 € + pont de verre payé sur place",
+    why:"Encore une demi-journée de route en montagne : même dans le programme C, on s'en passe."}
+];
+
+/* ================= utilitaires ================= */
+const icon = id => `<svg class="icon"><use href="#${id}"/></svg>`;
+const eur = v => `${Math.round(v).toLocaleString("fr-FR")} €`;
+const round = (v, s) => Math.round(v / s) * s;
+const state = {prog:"a", stop:null, day:null, lvl:"confort"};
+let map = null;
+const P = () => PROGS[state.prog];
+const DAYS = () => P().days;
+const stopsOf = pid => { const set = new Set(); PROGS[pid].days.forEach(d => { set.add(d.stop); if (d.base) set.add(d.base); }); return set; };
+const dayInfo = d => ({dow:DOWS[d.n-1], dm:DATES[d.n-1]});
+function daysLabel(id){
+  const ns = DAYS().filter(d => d.stop === id || d.base === id).map(d => d.n);
+  if (!ns.length) return "";
+  const parts = []; let s = ns[0], p = ns[0];
+  for (let i = 1; i <= ns.length; i++){
+    if (ns[i] === p + 1){ p = ns[i]; continue; }
+    parts.push(s === p ? `J${s}` : `J${s}–${p}`); s = p = ns[i];
+  }
+  return parts.join(" · ");
+}
+function paceHTML(l){
+  return `<span class="pace">${[1,2].map(i => `<i class="${i<=l?"f":""}"></i>`).join("")}<em>${l===1?"Rythme doux":"Journée bien remplie"}</em></span>`;
+}
+function dayHTML(d, o){
+  o = o || {};
+  const st = STOPS[d.stop], di = dayInfo(d);
+  return `<li class="day${o.cur?" cur":""}" id="${o.idp||"d"}${d.n}">
+    <p class="day-top"><span class="jn">J${d.n}</span><span>${di.dow} ${di.dm}</span>${paceHTML(d.pace)}</p>
+    <h3>${d.title}</h3>
+    ${o.where ? `<p class="where">${st.name}</p>` : ""}
+    ${d.leg ? `<p class="leg${d.leg.mode==="fly"?" fly":""}">${icon(d.leg.mode==="fly"?"i-plane":"i-car")}${d.leg.txt}</p>` : ""}
+    ${altsHTML(d)}
+    <dl class="slots">${d.slots.map(s => `<div><dt>${s[0]}</dt><dd>${s[1]}</dd></div>`).join("")}</dl>
+    ${d.note ? `<p class="note">${d.note}</p>` : ""}
+    ${o.mapbtn ? `<button class="mapbtn" type="button" data-goday="${d.n}">${icon("i-pin")}Voir sur la carte</button>` : ""}
+  </li>`;
+}
+function altsHTML(d){
+  const opts = d.leg && TRANS[`${d.leg.from}>${d.leg.to}`];
+  const others = opts ? opts.filter(o => !o[4]) : [];
+  if (!others.length) return "";
+  return `<div class="alts"><span class="lbl">Autres façons d'y aller</span><ul>${others.map(o =>
+    `<li>${icon(MODE[o[0]][0])}<span><b>${o[1]}</b>${[o[2], o[3] && (o[3] + (/^≈/.test(o[3]) ? " par pers." : ""))].filter(Boolean).map(x => ` · ${x}`).join("")}${o[5] ? `<small>${o[5]}</small>` : ""}</span></li>`).join("")}</ul></div>`;
+}
+function renderTrans(){
+  const seen = new Set();
+  const legs = DAYS().filter(d => d.leg && TRANS[`${d.leg.from}>${d.leg.to}`]).filter(d => { const k = `${d.leg.from}>${d.leg.to}`; if (seen.has(k)) return false; seen.add(k); return true; });
+  $("#transTitle").textContent = `Programme ${P().letter} · ${P().name}`;
+  $("#trans").innerHTML = legs.map(d => {
+    const opts = TRANS[`${d.leg.from}>${d.leg.to}`];
+    return `<div class="tr-row"><p class="tr-leg"><span class="jn">J${d.n}</span>${STOPS[d.leg.from].name} ${d.leg.round ? "↔" : "→"} ${STOPS[d.leg.to].name}</p>
+      <ul>${opts.map(o => `<li class="${o[4] ? "chosen" : ""}">${icon(MODE[o[0]][0])}<span><b>${o[1]}</b>${o[2] ? ` · ${o[2]}` : ""}${o[3] ? ` · ${o[3]}${/^≈/.test(o[3]) ? " par pers." : ""}` : ""}${o[5] ? `<small>${o[5]}</small>` : ""}</span>${o[4] ? `<em>notre choix</em>` : ""}</li>`).join("")}</ul></div>`;
+  }).join("") || `<p class="note">Aucun trajet long dans ce programme.</p>`;
+}
+function budget(pid, lvl){
+  const c = PROGS[pid].cost, L = LEVELS[lvl];
+  const items = [
+    [`Hôtels : ${HOTEL_NIGHTS} nuits, 2 chambres`, HOTEL_NIGHTS * L.room / 2],
+    ["Repas", 13 * L.meal],
+    ["Croisière dans la baie, 1 nuit", L.cruise],
+    ["Vols intérieurs, bagage compris", c.flights * L.fly],
+    ["Activités et visites", c.activities],
+    ["Voitures, bus et transferts", c.transfers * L.tr]
+  ].filter(i => i[1] > 0);
+  const pp = items.reduce((s, i) => s + i[1], 0);
+  return {items, pp, x4: pp * 4};
+}
+function groupsOf(days){
+  const g = [];
+  days.forEach(d => { const base = d.base || d.stop; const last = g[g.length-1]; if (last && last.base === base) last.days.push(d); else g.push({base, days:[d]}); });
+  return g;
+}
+
+/* ================= panneau ================= */
+function renderPanel(){
+  const p = $("#panel");
+  if (!state.stop){
+    p.innerHTML = `<p class="eyebrow">Programme ${P().letter} · le parcours</p>
+      <ul class="overview">${groupsOf(DAYS()).map((g, gi) => {
+        const st = STOPS[g.base], a = g.days[0], b = g.days[g.days.length-1];
+        const range = a === b ? DATES[a.n-1] : `${DATES[a.n-1]} → ${DATES[b.n-1]}`;
+        const extra = g.days.filter(d => d.stop !== g.base).map(d => STOPS[d.stop].name);
+        const nts = g.base === "lanha" ? "1 nuit à bord" : (gi === 0 ? "appartement" : `${g.days.length} nuit${g.days.length>1?"s":""}`);
+        return `<li><button type="button" data-stop="${g.base}"><img src="${img(st.photos[0])}" alt="" loading="lazy"><span class="on">${st.name}<small>${range}${extra.length ? " · et " + extra.join(", ") : ""}</small></span><span class="nt">${nts}</span></button></li>`;
+      }).join("")}</ul>
+      <p class="tip"><b>Comment ça marche :</b> changez de programme en haut, touchez une ville sur la carte ou un jour en bas. « Le voyage » déroule les 13 jours tout seul.</p>`;
+    return;
+  }
+  const st = STOPS[state.stop];
+  const days = DAYS().filter(d => d.stop === state.stop || d.base === state.stop);
+  const eyebrow = st.minor ? `Excursion d'une journée depuis ${STOPS[st.parent].name}` : (state.stop === "lanha" ? "1 nuit à bord" : `Programme ${P().letter} · ${days.length} jour${days.length>1?"s":""}`);
+  const when = days.map(d => `${dayInfo(d).dow} ${dayInfo(d).dm}`).join(" · ");
+  p.innerHTML = `<img class="p-photo" src="${img(st.photos[0])}" alt="${esc(PH[st.photos[0]].alt)}">
+    <header class="p-head">
+      <button class="back" type="button" data-home>← Tout le parcours</button>
+      <p class="eyebrow">${eyebrow}</p>
+      <h2 class="p-name">${st.name}</h2>
+      <p class="p-fr">${st.fr}</p>
+      <p class="p-blurb">${st.blurb}</p>
+      <dl class="facts"><div><dt>Quand</dt><dd>${when}</dd></div><div><dt>Météo</dt><dd>${st.weather}</dd></div></dl>
+    </header>
+    <ol class="dlist">${days.map(d => dayHTML(d,{cur:d.n===state.day,idp:"pd",where:d.stop!==state.stop})).join("")}</ol>
+    <p class="tip"><b>Bon à savoir.</b> ${st.tip}</p>`;
+  if (matchMedia("(min-width:1000px)").matches){
+    // sur grand écran, toute la colonne de gauche défile : on descend jusqu'à la photo ou au jour choisi
+    const el = state.day && document.getElementById("pd" + state.day);
+    $("#side").scrollTo({top: el ? el.offsetTop - 12 : (state.stop ? p.offsetTop : 0), behavior: reduce ? "auto" : "smooth"});
+  }
+}
+function renderPeek(){
+  const pk = $("#peek");
+  if (!state.stop){ pk.hidden = true; return; }
+  const st = STOPS[state.stop];
+  const d = state.day ? DAYS()[state.day-1] : null;
+  pk.innerHTML = `<span><b>${st.name}</b><small>${d ? `J${d.n} · ${dayInfo(d).dow} ${dayInfo(d).dm} · ${d.title}` : daysLabel(state.stop)}</small></span><span>Le détail ↓</span>`;
+  pk.hidden = false;
+}
+function syncUI(){
+  $$(".pin[data-stop]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.stop === state.stop)));
+  $$(".chip[data-day]").forEach(b => {
+    const on = Number(b.dataset.day) === state.day;
+    b.setAttribute("aria-pressed", String(on));
+    if (on){ const box = $("#days"); box.scrollTo({left: b.offsetLeft - box.clientWidth/2 + b.clientWidth/2, behavior: reduce ? "auto" : "smooth"}); }
+  });
+  renderPanel(); renderPeek();
+  $("#hint").hidden = !!state.stop;
+  if (map) map.relabel();
+}
+function selectStop(id){ state.stop = id; state.day = null; syncUI(); if (map) map.focusStop(id); }
+function selectDay(n){ const d = DAYS()[n-1]; state.day = n; state.stop = d.stop; syncUI(); if (map) map.focusDay(d); }
+function goHome(){ state.stop = null; state.day = null; syncUI(); if (map) map.overview(); }
+
+/* ================= programme choisi ================= */
+function renderProgTabs(){
+  $("#progs").innerHTML = Object.entries(PROGS).map(([id, p]) =>
+    `<button class="prog" role="tab" type="button" data-prog="${id}" aria-selected="${id===state.prog}"><span class="l">${p.letter}</span><b>${p.name}</b><small>${p.sub}</small></button>`).join("");
+  const p = P(), b = budget(state.prog, state.lvl);
+  $("#pdesc").innerHTML = `<p>${p.pitch}</p><div class="pm">${p.plus.map(x => `<span class="p">${x}</span>`).join("")}${p.moins.map(x => `<span class="m">${x}</span>`).join("")}</div>`;
+  $("#stats").innerHTML = `<li><b>13</b>jours</li><li><b>${stopsOf(state.prog).size}</b>lieux</li><li><b>${p.flights}</b>vol${p.flights>1?"s":""}</li><li><b>0</b>randonnée</li>`;
+}
+function renderDays(){
+  $("#days").innerHTML = DAYS().map(d => { const di = dayInfo(d); return `<button class="chip${d.leg?(d.leg.mode==="fly"?" move fly":" move"):""}" type="button" data-day="${d.n}" aria-pressed="false" aria-label="Jour ${d.n}, ${di.dow} ${di.dm} : ${esc(d.title)}"><b>${d.n}</b>${di.dow.replace(".","")} ${di.dm.split(" ")[0]}</button>`; }).join("")
+    + `<span class="chip end"><b>13 nov.</b>vol France</span>`;
+}
+function renderProgramme(){
+  const p = P();
+  $("#progEyebrow").textContent = `Programme ${p.letter} · ${p.name}`;
+  $("#prog").innerHTML = groupsOf(DAYS()).map(g => {
+    const st = STOPS[g.base]; const a = g.days[0], b = g.days[g.days.length-1];
+    const range = a === b ? `J${a.n} · ${dayInfo(a).dow} ${dayInfo(a).dm}` : `J${a.n}–${b.n} · ${dayInfo(a).dm} → ${dayInfo(b).dm}`;
+    return `<section class="leg-group"><header><h3>${st.name}</h3><span>${range}</span></header>
+      <ol class="dlist">${g.days.map(d => dayHTML(d,{where:d.stop!==g.base,mapbtn:true})).join("")}</ol></section>`;
+  }).join("");
+}
+function renderPlacesDim(){
+  const inP = stopsOf(state.prog);
+  $$(".place").forEach(el => el.classList.toggle("dim", !inP.has(el.dataset.place)));
+  $$(".ph .tags span").forEach(s => s.classList.toggle("on", s.textContent.toLowerCase() === state.prog));
+}
+function setProg(pid){
+  if (!PROGS[pid] || pid === state.prog) return;
+  state.prog = pid; state.stop = null; state.day = null;
+  stopPlay();
+  renderProgTabs(); renderDays(); renderProgramme(); renderPlacesDim(); renderBudget(); renderTrans();
+  syncUI();
+  if (map) map.setProgramme();
+}
+
+/* ================= photos et idées ================= */
+function renderPlaces(){
+  $("#places").innerHTML = PLACE_ORDER.map(id => {
+    const st = STOPS[id];
+    const progs = Object.keys(PROGS).filter(p => stopsOf(p).has(id));
+    return `<article class="place" data-place="${id}">
+      <div class="ph"><img src="${img(st.photos[0])}" alt="${esc(PH[st.photos[0]].alt)}" loading="lazy" decoding="async" data-main>
+        <div class="tags" aria-label="Programmes ${progs.map(p => p.toUpperCase()).join(", ")}">${progs.map(p => `<span>${p.toUpperCase()}</span>`).join("")}</div>
+        <h3>${st.name}</h3>
+        ${st.photos.length > 1 ? `<div class="thumbs">${st.photos.map((k, i) => `<button type="button" data-ph="${k}" aria-pressed="${i===0}" aria-label="Voir : ${esc(PH[k].alt)}"><img src="${img(k)}" alt="" loading="lazy"></button>`).join("")}</div>` : ""}
+      </div>
+      <div class="place-body">
+        <p class="sub">${st.fr}</p>
+        <ul class="must">${st.must.map(m => `<li>${m}</li>`).join("")}</ul>
+        <div class="idea"><label for="idea-${id}">Ton idée ou un lien pour ${st.name}</label>
+          <input class="field" id="idea-${id}" data-idea="${id}" type="text" placeholder="Une envie, une question, un lien…" autocomplete="off">
+          <span class="saved" data-saved="${id}"></span></div>
+      </div>
+    </article>`;
+  }).join("");
+}
+
+/* ================= budget ================= */
+function renderBudget(){
+  $("#lvl").innerHTML = Object.entries(LEVELS).map(([k, L]) => `<button type="button" data-lvl="${k}" aria-pressed="${k===state.lvl}">${L.label}</button>`).join("");
+  $("#tri").innerHTML = Object.entries(PROGS).map(([id, p]) => {
+    const b = budget(id, state.lvl);
+    return `<button class="tcard" type="button" data-prog="${id}" aria-pressed="${id===state.prog}">
+      <span class="tn"><b>${p.letter} · ${p.name}</b></span>
+      <span class="big">≈ ${eur(round(b.pp, 10))}</span>
+      <span class="pp">par personne · soit ≈ ${eur(round(b.x4, 50))} pour nous 4</span></button>`;
+  }).join("");
+  const b = budget(state.prog, state.lvl), max = Math.max(...b.items.map(i => i[1]));
+  $("#budTitle").textContent = `Programme ${P().letter}, niveau ${LEVELS[state.lvl].label.toLowerCase()} : le détail par personne`;
+  $("#bars").innerHTML = b.items.slice().sort((x, y) => y[1] - x[1]).map(i => `<li><span>${i[0]}</span><span class="v">${eur(round(i[1], 5))}</span><span class="b"><i style="--v:${(i[1]/max*100).toFixed(1)}"></i></span></li>`).join("");
+  $("#btotal").textContent = `≈ ${eur(round(b.pp, 10))}`;
+  const L = LEVELS[state.lvl];
+  $("#hyp").innerHTML = [`${L.sub}.`, `Hôtels : ≈ ${L.room} € la chambre par nuit, 2 chambres pour nous 4, ${HOTEL_NIGHTS} nuits. Les 3 nuits dans l'appartement de Hanoï sont déjà payées.`, `Repas : ≈ ${L.meal} € par personne et par jour.`, `Croisière : ≈ ${L.cruise} € par personne, repas à bord compris.`, "Vols France ↔ Vietnam non compris."].map(x => `<li>${x}</li>`).join("");
+}
+
+/* ================= comparatif ================= */
+let mult = 1;
+function renderIdeas(){
+  $("#cmp").insertAdjacentHTML("beforeend", IDEAS.map(it => {
+    let verdict = "";
+    if (it.k === "cheap") verdict = `<span class="pill keep">Moins cher en direct</span>`;
+    else if (it.k === "up") verdict = `<span class="pill soft">Plus confortable</span>`;
+    else if (it.k === "soft") verdict = `<span class="pill soft">Plus doux</span>`;
+    else if (it.k === "keep") verdict = `<span class="pill keep">On garde</span>`;
+    else verdict = `<span class="pill skip">Laissé de côté</span>`;
+    const ours = it.our != null
+      ? `<span class="lbl">Ce qu'on fait</span>${it.ours} · <b data-pp="${it.our}"></b>${it.ourNote?`<small>${it.ourNote}</small>`:""}<p>${it.why}</p>`
+      : `<span class="lbl">Ce qu'on fait</span>${it.k==="keep"?"On réserve ce lien tel quel.":"On laisse de côté."}<p>${it.why}</p>`;
+    return `<div class="row ${it.k}">
+      <div class="idea"><p class="place-n">${it.place}</p><p class="what">${it.what}</p><a class="src" href="${it.link}" target="_blank" rel="noopener">Le lien du groupe${it.extra?" "+it.extra:""}${icon("i-out")}</a></div>
+      <div class="gyg"><span class="lbl">GetYourGuide</span><b data-pp="${it.gyg}"></b>${it.gygNote?`<small>${it.gygNote}</small>`:""}</div>
+      <div class="ours">${ours}</div>
+      <div class="verdict">${verdict}</div>
+    </div>`;
+  }).join(""));
+}
+function renderPrices(){
+  $$("[data-pp]").forEach(el => { el.textContent = `≈ ${eur(Number(el.dataset.pp) * mult)}`; });
+  $$("[data-save]").forEach(el => { const v = Number(el.dataset.save) * mult; el.textContent = `${v < 0 ? "+" : "−"}${eur(Math.abs(v))}`; });
+}
+
+/* ================= vos choix ================= */
+const STORE = "vn-famille-choix-v1";
+let drafts = {};
+try { drafts = JSON.parse(localStorage.getItem(STORE) || "{}") || {}; } catch (e) { drafts = {}; }
+let who = PEOPLE.includes(drafts._who) ? drafts._who : null;
+const blank = () => ({prog:null, lvl:null, likes:{}, notes:{}, mot:""});
+const me = () => { if (!who) return null; drafts[who] = Object.assign(blank(), drafts[who] || {}); return drafts[who]; };
+let saveT = null;
+function persist(){ clearTimeout(saveT); saveT = setTimeout(() => { try { drafts._who = who; localStorage.setItem(STORE, JSON.stringify(drafts)); } catch (e) {} }, 300); }
+
+function renderForm(){
+  $("#who").innerHTML = PEOPLE.map(n => `<button type="button" data-who="${n}" aria-pressed="${n===who}">${n}</button>`).join("");
+  $("#fprog").innerHTML = Object.entries(PROGS).map(([id, p]) => `<button class="opt" type="button" data-fprog="${id}" aria-pressed="false"><b>${p.letter} · ${p.name}</b><small>${p.sub}</small></button>`).join("")
+    + `<button class="opt" type="button" data-fprog="any" aria-pressed="false"><b>Ça m'est égal</b><small>Je suis la majorité</small></button>`;
+  $("#flvl").innerHTML = Object.entries(LEVELS).map(([k, L]) => `<button class="opt" type="button" data-flvl="${k}" aria-pressed="false"><b>${L.label}</b><small>${L.sub}</small></button>`).join("");
+  $("#flikes").innerHTML = LIKES.map(([k, label, pr]) => `<div class="like"><span class="lt">${label}<small>Programme${pr.length>1?"s":""} ${pr.toUpperCase().split("").join(", ")}</small></span>
+    <span class="tri3" role="group" aria-label="${esc(label)}"><button type="button" data-like="${k}" data-v="2" aria-pressed="false">Oui !</button><button type="button" data-like="${k}" data-v="1" aria-pressed="false">Pourquoi pas</button><button type="button" data-like="${k}" data-v="0" aria-pressed="false">Non merci</button></span></div>`).join("");
+  fillForm();
+}
+function fillForm(){
+  const m = me();
+  $$("#who button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.who === who)));
+  $$("[data-fprog]").forEach(b => b.setAttribute("aria-pressed", String(!!m && m.prog === b.dataset.fprog)));
+  $$("[data-flvl]").forEach(b => b.setAttribute("aria-pressed", String(!!m && m.lvl === b.dataset.flvl)));
+  $$("[data-like]").forEach(b => b.setAttribute("aria-pressed", String(!!m && String(m.likes[b.dataset.like]) === b.dataset.v)));
+  $("#fmot").value = m ? m.mot : "";
+  $$("[data-idea]").forEach(i => { i.value = m && m.notes[i.dataset.idea] || ""; });
+  $$("[data-saved]").forEach(s => { s.textContent = ""; });
+  renderMsg();
+}
+function message(){
+  const m = me();
+  if (!m) return "";
+  const lines = [`Mes choix pour le Vietnam · ${who}`, ""];
+  lines.push(`Programme préféré : ${m.prog ? (m.prog === "any" ? "ça m'est égal" : `${PROGS[m.prog].letter} · ${PROGS[m.prog].name}`) : "pas encore choisi"}`);
+  if (m.lvl && LEVELS[m.lvl]){ const b = budget(m.prog && m.prog !== "any" ? m.prog : state.prog, m.lvl); lines.push(`Budget : ${LEVELS[m.lvl].label} (≈ ${eur(round(b.pp, 10))} par personne)`); }
+  const by = v => LIKES.filter(l => String(m.likes[l[0]]) === v).map(l => l[1]);
+  [["2","Très envie"],["1","Pourquoi pas"],["0","Non merci"]].forEach(([v, t]) => { const l = by(v); if (l.length) lines.push("", `${t} :`, ...l.map(x => `- ${x}`)); });
+  const notes = PLACE_ORDER.filter(id => (m.notes[id] || "").trim());
+  if (notes.length) lines.push("", "Mes idées par lieu :", ...notes.map(id => `- ${STOPS[id].name} : ${m.notes[id].trim()}`));
+  if (m.mot.trim()) lines.push("", "Mon mot :", m.mot.trim());
+  return lines.join("\n");
+}
+function renderMsg(){
+  const t = message();
+  $("#msg").textContent = t || "Commence par choisir ton prénom, en haut.";
+  const wa = $("#waBtn");
+  if (t){ wa.href = "https://wa.me/?text=" + encodeURIComponent(t); wa.removeAttribute("aria-disabled"); }
+  else { wa.href = "https://wa.me/"; wa.setAttribute("aria-disabled", "true"); }
+  $("#copyBtn").setAttribute("aria-disabled", t ? "false" : "true");
+  $("#saveBtn").setAttribute("aria-disabled", t ? "false" : "true");
+}
+function needWho(){
+  if (who) return true;
+  $("#status").textContent = "Choisis d'abord ton prénom, à l'étape 1.";
+  $("#who").scrollIntoView({behavior: reduce ? "auto" : "smooth", block:"center"});
+  return false;
+}
+
+function countdown(){
+  const start = new Date("2026-10-31T00:00:00+07:00"), end = new Date("2026-11-13T00:00:00+07:00"), now = new Date();
+  const el = $("#count");
+  if (now < start){ const n = Math.ceil((start - now) / 864e5); el.textContent = n > 1 ? `Plus que ${n} jours avant l'arrivée` : "Arrivée demain"; }
+  else if (now < end){ const n = Math.floor((now - start) / 864e5) + 1; el.textContent = `Jour ${n} sur 13`; }
+  else el.textContent = "Voyage terminé : merci pour ces souvenirs";
+}
+function renderCredits(){
+  $("#credits").innerHTML = Object.values(PH).map(p => `<li>${esc(p.alt)} : <a href="${p.u}" target="_blank" rel="noopener">${esc(p.a)}</a>, ${p.l}, via Wikimedia Commons</li>`).join("");
+}
+
+/* ================= carte 3D ================= */
+function initMap(){
+  if (!window.THREE || !THREE.OrbitControls) throw new Error("three indisponible");
+  const canvas = $("#gl"), stage = $("#carte"), pinsBox = $("#pins");
+  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, powerPreference:"high-performance"});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setClearColor(0x06110f, 1);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 300);
+  const controls = new THREE.OrbitControls(camera, canvas);
+  canvas.style.touchAction = "pan-y";
+  controls.enableDamping = true; controls.dampingFactor = 0.08;
+  controls.minDistance = 2.2; controls.maxDistance = 42;
+  controls.minPolarAngle = 0.12; controls.maxPolarAngle = 1.18;
+  controls.screenSpacePanning = false; controls.rotateSpeed = 0.6; controls.zoomSpeed = 0.8;
+  controls.touches = {ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_ROTATE};
+  // un doigt : la page défile normalement ; deux doigts : zoom et rotation de la carte
+  const oneFinger = e => { if (e.touches.length === 1) e.stopPropagation(); };
+  stage.addEventListener("touchstart", oneFinger, {capture:true, passive:true});
+  stage.addEventListener("touchmove", oneFinger, {capture:true, passive:true});
+
+  const LON0 = 106, LAT0 = 16, KX = Math.cos(LAT0 * Math.PI / 180);
+  const DEPTH = 0.22, BEVEL = 0.035, TOP = DEPTH + 2 * BEVEL;
+  const Pt = (lon, lat, y) => new THREE.Vector3((lon - LON0) * KX, y, -(lat - LAT0));
+  const C = hex => new THREE.Color(hex);
+
+  const seaMat = new THREE.ShaderMaterial({
+    uniforms:{uBg:{value:C(0x06110f)},uSea:{value:C(0x0e2a25)},uLine:{value:C(0x8fd3bd)},uKX:{value:KX}},
+    vertexShader:"varying vec3 vW;void main(){vec4 w=modelMatrix*vec4(position,1.0);vW=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}",
+    fragmentShader:`uniform vec3 uBg;uniform vec3 uSea;uniform vec3 uLine;uniform float uKX;varying vec3 vW;
+      void main(){vec2 p=vW.xz;float r=length(p*vec2(1.3,0.6));
+        vec3 col=mix(uSea,uBg,smoothstep(1.0,8.5,r));
+        vec2 g=vec2(p.x/uKX,p.y);vec2 f=abs(fract(g)-0.5);
+        float ln=max(smoothstep(0.488,0.5,f.x),smoothstep(0.488,0.5,f.y));
+        col+=uLine*ln*0.075*(1.0-smoothstep(5.0,17.0,length(p)));
+        col=mix(col,uBg,smoothstep(14.0,30.0,length(p)));
+        gl_FragColor=vec4(col,1.0);}`
+  });
+  const sea = new THREE.Mesh(new THREE.PlaneGeometry(90, 90), seaMat);
+  sea.rotation.x = -Math.PI / 2; sea.position.y = -0.002; scene.add(sea);
+
+  const landMat = new THREE.ShaderMaterial({
+    uniforms:{uN:{value:C(0x1f6a56)},uS:{value:C(0x3b8f6b)},uSide:{value:C(0x123a32)},uGold:{value:C(0xf2b544)},
+      uSel:{value:new THREE.Vector3(0,0,0)},uSelK:{value:0},uTop:{value:TOP}},
+    vertexShader:"varying vec3 vW;varying vec3 vN;void main(){vec4 w=modelMatrix*vec4(position,1.0);vW=w.xyz;vN=normalize(mat3(modelMatrix)*normal);gl_Position=projectionMatrix*viewMatrix*w;}",
+    fragmentShader:`uniform vec3 uN;uniform vec3 uS;uniform vec3 uSide;uniform vec3 uGold;uniform vec3 uSel;uniform float uSelK;uniform float uTop;
+      varying vec3 vW;varying vec3 vN;
+      void main(){float up=clamp(vN.y,0.0,1.0);
+        float t=clamp((vW.z+7.6)/15.2,0.0,1.0);
+        vec3 top=mix(uN,uS,t);
+        top*=0.975+0.025*sin((vW.x*0.6+vW.z)*36.0);
+        float lat=abs(fract(vW.z)-0.5);top+=uGold*0.05*smoothstep(0.49,0.5,lat);
+        float d=distance(vW.xz,uSel.xz);
+        top+=uGold*uSelK*(0.5*exp(-d*d*3.2)+0.1*exp(-d*0.8));
+        float h=clamp(vW.y/uTop,0.0,1.0);
+        vec3 side=mix(uSide*0.45,uSide,h)+uGold*0.5*smoothstep(0.9,1.0,h);
+        gl_FragColor=vec4(mix(side,top,smoothstep(0.5,0.9,up)),1.0);}`
+  });
+  const outlineTop = new THREE.LineBasicMaterial({color:0xf2b544, transparent:true, opacity:0.55});
+  const outlineSea = new THREE.LineBasicMaterial({color:0x56b898, transparent:true, opacity:0.35});
+  VN.forEach(poly => {
+    const pts = poly.slice();
+    const a = pts[0], b = pts[pts.length-1];
+    if (a[0] === b[0] && a[1] === b[1]) pts.pop();
+    const shape = new THREE.Shape(pts.map(q => new THREE.Vector2((q[0]-LON0)*KX, q[1]-LAT0)));
+    const geo = new THREE.ExtrudeGeometry(shape, {depth:DEPTH, bevelEnabled:true, bevelThickness:BEVEL, bevelSize:0.022, bevelSegments:2, curveSegments:1});
+    geo.rotateX(-Math.PI / 2); geo.translate(0, BEVEL, 0);
+    scene.add(new THREE.Mesh(geo, landMat));
+    const ring = pts.map(q => Pt(q[0], q[1], TOP + 0.003)); ring.push(ring[0].clone());
+    scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(ring), outlineTop));
+    const ring2 = pts.map(q => Pt(q[0], q[1], 0.004)); ring2.push(ring2[0].clone());
+    const echo = new THREE.Line(new THREE.BufferGeometry().setFromPoints(ring2), outlineSea);
+    echo.scale.set(1.012, 1, 1.006); scene.add(echo);
+  });
+
+  const beamMat = () => new THREE.ShaderMaterial({
+    uniforms:{uC:{value:C(0xf2b544)},uO:{value:0.7}}, transparent:true, depthWrite:false, blending:THREE.AdditiveBlending, side:THREE.DoubleSide,
+    vertexShader:"varying vec2 vU;void main(){vU=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
+    fragmentShader:"uniform vec3 uC;uniform float uO;varying vec2 vU;void main(){float a=pow(1.0-vU.y,1.6)*uO;gl_FragColor=vec4(uC,a);}"
+  });
+  const markers = {};
+  ORDER.forEach((id, i) => {
+    const st = STOPS[id];
+    const y = st.water ? 0.02 : TOP + 0.004;
+    const pos = Pt(st.lon, st.lat, y);
+    const g = new THREE.Group(); g.position.copy(pos); scene.add(g);
+    const core = new THREE.Mesh(new THREE.CircleGeometry(st.minor ? 0.05 : 0.07, 32), new THREE.MeshBasicMaterial({color:0xffe2a3}));
+    core.rotation.x = -Math.PI/2; core.position.y = 0.004; g.add(core);
+    const ringM = new THREE.MeshBasicMaterial({color:0xf2b544, transparent:true, opacity:0.8, depthWrite:false, blending:THREE.AdditiveBlending, side:THREE.DoubleSide});
+    const ring = new THREE.Mesh(new THREE.RingGeometry(0.09, 0.12, 48), ringM);
+    ring.rotation.x = -Math.PI/2; ring.position.y = 0.006; g.add(ring);
+    const bh = st.minor ? 0.55 : 1.0;
+    const beam = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 1, 16, 1, true), beamMat());
+    beam.scale.y = bh; beam.position.y = bh/2; g.add(beam);
+    const hit = new THREE.Mesh(new THREE.SphereGeometry(0.32, 10, 8), new THREE.MeshBasicMaterial({visible:false}));
+    hit.userData.stop = id; g.add(hit);
+    markers[id] = {pos, g, ring, beam, hit, bh, cur:bh, phase:i*0.37, on:true};
+  });
+
+  const arcMat = (color, dash) => new THREE.ShaderMaterial({
+    uniforms:{uC:{value:C(color)},uT:{value:0},uA:{value:0},uD:{value:dash}}, transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+    vertexShader:"varying vec2 vU;void main(){vU=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
+    fragmentShader:`uniform vec3 uC;uniform float uT;uniform float uA;uniform float uD;varying vec2 vU;
+      void main(){float x=vU.x;float f=fract(x*uD-uT);
+        float dash=smoothstep(0.0,0.06,f)*(1.0-smoothstep(0.45,0.52,f));
+        float a=mix(0.22,0.5,uA)+dash*mix(0.25,0.9,uA);
+        a*=smoothstep(0.0,0.03,x)*(1.0-smoothstep(0.97,1.0,x));
+        gl_FragColor=vec4(uC*(1.0+uA*0.5),a);}`
+  });
+  let legs = [];
+  function setLegs(days){
+    legs.forEach(L => { scene.remove(L.mesh); L.mesh.geometry.dispose(); L.mat.dispose(); });
+    legs = days.filter(d => d.leg).map(d => {
+      const a = markers[d.leg.from].pos, b = markers[d.leg.to].pos;
+      const fly = d.leg.mode === "fly";
+      const dist = a.distanceTo(b);
+      const mid = a.clone().lerp(b, 0.5);
+      mid.y = Math.max(a.y, b.y) + (fly ? 0.35 + dist * 0.32 : 0.12 + dist * 0.18);
+      if (fly) mid.x += 0.9 + dist * 0.05;
+      const curve = new THREE.QuadraticBezierCurve3(a.clone(), mid, b.clone());
+      const mat = arcMat(fly ? 0xf2b544 : 0x7fd6b9, fly ? Math.max(6, dist * 4) : Math.max(3, dist * 6));
+      const mesh = new THREE.Mesh(new THREE.TubeGeometry(curve, 96, fly ? 0.016 : 0.013, 6, false), mat);
+      scene.add(mesh);
+      return {day:d.n, curve, mat, mesh, round:!!d.leg.round, act:0};
+    });
+  }
+
+  const glowTex = (() => {
+    const c = document.createElement("canvas"); c.width = c.height = 64;
+    const x = c.getContext("2d"); const gr = x.createRadialGradient(32,32,0,32,32,32);
+    gr.addColorStop(0,"rgba(255,240,200,1)"); gr.addColorStop(0.25,"rgba(242,181,68,.9)"); gr.addColorStop(1,"rgba(242,181,68,0)");
+    x.fillStyle = gr; x.fillRect(0,0,64,64); return new THREE.CanvasTexture(c);
+  })();
+  const traveler = new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex, transparent:true, depthWrite:false, blending:THREE.AdditiveBlending}));
+  traveler.scale.set(0.42, 0.42, 1); traveler.visible = false; scene.add(traveler);
+
+  ORDER.forEach(id => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "pin" + (STOPS[id].minor ? " minor" : ""); b.dataset.stop = id;
+    b.setAttribute("aria-pressed","false");
+    b.addEventListener("click", () => { stopPlay(); selectStop(id); });
+    pinsBox.appendChild(b); markers[id].el = b;
+  });
+  function labelPins(){
+    const inP = stopsOf(state.prog);
+    ORDER.forEach(id => {
+      const m = markers[id], st = STOPS[id];
+      m.on = inP.has(id); m.g.visible = m.on;
+      const dl = daysLabel(id);
+      m.el.innerHTML = `<span class="n">${st.name}</span><span class="d">${dl}</span>`;
+      m.el.setAttribute("aria-label", `${st.name}, ${dl.replace(/J/g,"jour ")}`);
+      m.el.tabIndex = m.on ? 0 : -1; m.w = null;
+    });
+  }
+  const geoNames = [["LAOS",103.6,18.6],["CAMBODGE",104.9,12.9],["CHINE",107.6,22.9],["THAÏLANDE",101.6,15.2]].map(g => {
+    const s = document.createElement("span"); s.className = "geo"; s.textContent = g[0]; pinsBox.appendChild(s);
+    return {el:s, pos:Pt(g[1], g[2], 0)};
+  });
+
+  const sph = new THREE.Spherical(), tmp = new THREE.Vector3();
+  let fly = null;
+  const DEFAULT_TH = -0.18;
+  function view(){ tmp.copy(camera.position).sub(controls.target); sph.setFromVector3(tmp); return {t:controls.target.clone(), r:sph.radius, phi:sph.phi, th:sph.theta}; }
+  let fitScale = 1;
+  function fitR(halfW, halfD, phi){
+    const v = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+    return Math.max((halfD * Math.cos(phi) + 0.4) / v * fitScale, (halfW + 0.3) / (v * camera.aspect)) * 1.08;
+  }
+  function flyTo(t, r, phi, th, dur){
+    fly = {a:view(), b:{t, r, phi, th: th == null ? view().th : th}, t0:performance.now(), dur: reduce ? 0 : (dur || 1500)};
+  }
+  function frame(points, minR, phi, th){
+    const box = new THREE.Box3().setFromPoints(points);
+    const c = box.getCenter(new THREE.Vector3()), s = box.getSize(new THREE.Vector3());
+    c.y = 0.2;
+    flyTo(c, Math.max(minR, fitR(s.x/2, s.z/2, phi)), phi, th);
+  }
+  const ALL = [Pt(102.1,23.4,0), Pt(109.5,23.4,0), Pt(102.1,8.5,0), Pt(109.5,8.5,0), Pt(103.8,10.2,0)];
+  let selK = 0; const selPos = new THREE.Vector3();
+  function overview(){ frame(ALL, 6, 0.58, DEFAULT_TH); selK = 0; }
+  function focusStop(id){
+    const m = markers[id]; selPos.copy(m.pos); selK = 1;
+    const near = ORDER.filter(k => markers[k].on && markers[k].pos.distanceTo(m.pos) < 1.6).map(k => markers[k].pos);
+    frame(near.concat([m.pos]), STOPS[id].minor ? 3.4 : 4.4, 0.86, null);
+  }
+  function focusDay(d){
+    const m = markers[d.stop]; selPos.copy(m.pos); selK = 1;
+    if (d.leg){ const a = markers[d.leg.from].pos, b = markers[d.leg.to].pos; frame([a, b], 3.8, d.leg.mode === "fly" ? 0.6 : 0.8, null); }
+    else frame([m.pos], 4.2, 0.86, null);
+  }
+  function setProgramme(){ setLegs(DAYS()); labelPins(); overview(); }
+
+  controls.addEventListener("start", () => { fly = null; stopPlay(); });
+  const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+  let down = null;
+  canvas.addEventListener("pointerdown", e => { down = {x:e.clientX, y:e.clientY}; });
+  canvas.addEventListener("pointerup", e => {
+    if (!down || Math.hypot(e.clientX - down.x, e.clientY - down.y) > 6) return;
+    const r = canvas.getBoundingClientRect();
+    ndc.set((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+    ray.setFromCamera(ndc, camera);
+    const hit = ray.intersectObjects(ORDER.filter(k => markers[k].on).map(k => markers[k].hit), false)[0];
+    if (hit){ stopPlay(); selectStop(hit.object.userData.stop); }
+  });
+  $("#zin").addEventListener("click", () => { const v = view(); flyTo(v.t, Math.max(controls.minDistance, v.r * 0.7), v.phi, v.th, 500); });
+  $("#zout").addEventListener("click", () => { const v = view(); flyTo(v.t, Math.min(controls.maxDistance, v.r * 1.4), v.phi, v.th, 500); });
+
+  function resize(){
+    const w = stage.clientWidth, h = stage.clientHeight;
+    renderer.setSize(w, h, false); camera.aspect = w / Math.max(h, 1);
+    const narrow = w < 640; stage.classList.toggle("narrow", narrow);
+    const topPad = narrow ? 52 : 16, botPad = 74;
+    camera.setViewOffset(w, h, 0, (botPad - topPad) / 2, w, h);
+    camera.updateProjectionMatrix();
+    fitScale = h / Math.max(h - topPad - botPad, 120);
+    ORDER.forEach(id => { markers[id].w = null; });
+  }
+  new ResizeObserver(resize).observe(stage); resize();
+
+  let visible = true;
+  new IntersectionObserver(es => { visible = es[0].isIntersecting; }, {threshold:0}).observe(stage);
+  const clock = new THREE.Clock();
+  const proj = new THREE.Vector3();
+  const W = () => stage.clientWidth, Hh = () => stage.clientHeight;
+  setLegs(DAYS()); labelPins(); overview();
+
+  function placePin(m, st){
+    proj.copy(m.pos); proj.y += 0.05; proj.project(camera);
+    const w = W(), h = Hh();
+    const mx = (proj.x * 0.5 + 0.5) * w, my = (-proj.y * 0.5 + 0.5) * h + st.dy;
+    if (m.w == null) m.w = m.el.offsetWidth;
+    let left = st.side === "l" ? mx - 14 - m.w : mx + 14;
+    if (left < 6) left = mx + 14;
+    if (left + m.w > w - 6) left = mx - 14 - m.w;
+    left = Math.max(6, Math.min(w - 6 - m.w, left));
+    m.el.style.transform = `translate(${left.toFixed(1)}px,${my.toFixed(1)}px) translateY(-50%)`;
+    return !(proj.z > 1 || my < -40 || my > h + 40 || mx < -100 || mx > w + 100);
+  }
+  function placeGeo(el, v){
+    proj.copy(v).project(camera);
+    el.style.transform = `translate(${((proj.x*0.5+0.5)*W()).toFixed(1)}px,${((-proj.y*0.5+0.5)*Hh()).toFixed(1)}px) translate(-50%,-50%)`;
+  }
+
+  function drawFrame(force){
+    if (!force && (!visible || document.hidden)) return;
+    const t = clock.getElapsedTime(), now = performance.now();
+    if (fly){
+      const k = fly.dur ? Math.min(1, (now - fly.t0) / fly.dur) : 1;
+      const e = k < 0.5 ? 4*k*k*k : 1 - Math.pow(-2*k + 2, 3) / 2;
+      const a = fly.a, b = fly.b;
+      let dth = b.th - a.th; dth = Math.atan2(Math.sin(dth), Math.cos(dth));
+      controls.target.copy(a.t).lerp(b.t, e);
+      tmp.setFromSphericalCoords(a.r + (b.r - a.r) * e, a.phi + (b.phi - a.phi) * e, a.th + dth * e);
+      camera.position.copy(controls.target).add(tmp);
+      if (k >= 1) fly = null;
+    }
+    controls.target.x = THREE.MathUtils.clamp(controls.target.x, -6, 6);
+    controls.target.z = THREE.MathUtils.clamp(controls.target.z, -9, 9);
+    controls.update();
+
+    const u = landMat.uniforms;
+    u.uSel.value.lerp(selPos, 0.12);
+    u.uSelK.value += ((state.stop ? selK : 0) - u.uSelK.value) * 0.08;
+
+    const camR = camera.position.distanceTo(controls.target);
+    ORDER.forEach(id => {
+      const m = markers[id], st = STOPS[id];
+      if (!m.on){ m.el.classList.add("off"); return; }
+      const on = id === state.stop;
+      const goal = on ? m.bh * 1.7 : m.bh;
+      m.cur += (goal - m.cur) * 0.1;
+      m.beam.scale.y = m.cur; m.beam.position.y = m.cur / 2;
+      m.beam.material.uniforms.uO.value = on ? 1.0 : 0.55;
+      const p = reduce ? 0.5 : ((t * 0.55 + m.phase) % 1);
+      const s = 1 + p * (on ? 2.6 : 1.8);
+      m.ring.scale.set(s, s, s); m.ring.material.opacity = (1 - p) * (on ? 0.95 : 0.6);
+      const ok = placePin(m, st);
+      let show = ok;
+      if (st.minor) show = ok && (camR < 9 || state.stop === id || state.stop === st.parent);
+      m.el.classList.toggle("off", !show);
+    });
+    geoNames.forEach(g => placeGeo(g.el, g.pos));
+
+    let active = null;
+    legs.forEach(L => {
+      const on = state.day === L.day;
+      L.act += ((on ? 1 : 0) - L.act) * 0.08;
+      L.mat.uniforms.uA.value = L.act;
+      L.mat.uniforms.uT.value = reduce ? 0 : t * 0.45;
+      if (on) active = L;
+    });
+    if (active){
+      let k = (t * 0.28) % 1;
+      if (active.round) k = k < 0.5 ? k * 2 : 2 - k * 2;
+      traveler.position.copy(active.curve.getPoint(reduce ? 0.5 : k)); traveler.position.y += 0.02;
+      traveler.visible = true;
+    } else traveler.visible = false;
+
+    renderer.render(scene, camera);
+  }
+  drawFrame(true);
+  renderer.setAnimationLoop(() => drawFrame(false));
+
+  return {focusStop, focusDay, overview, setProgramme, relabel(){ ORDER.forEach(id => { markers[id].w = null; }); }};
+}
+
+/* ================= lecture automatique ================= */
+let playTimer = null;
+function stopPlay(){
+  if (!playTimer) return;
+  clearInterval(playTimer); playTimer = null;
+  const b = $("#play"); b.setAttribute("aria-pressed","false");
+  b.innerHTML = `${icon("i-play")}<span>Le voyage</span>`;
+}
+function startPlay(){
+  const b = $("#play"); b.setAttribute("aria-pressed","true");
+  b.innerHTML = `${icon("i-pause")}<span>Pause</span>`;
+  let n = state.day && state.day < 13 ? state.day : 0;
+  const step = () => { n += 1; if (n > 13){ stopPlay(); goHome(); return; } selectDay(n); };
+  step(); playTimer = setInterval(step, 3800);
+}
+
+/* ================= démarrage ================= */
+const hp = (location.hash.match(/^#prog-([abc])$/) || [])[1];
+if (hp) state.prog = hp;
+renderProgTabs(); renderDays(); renderProgramme(); renderPlaces(); renderPlacesDim(); renderBudget(); renderTrans();
+renderIdeas(); renderPrices(); renderForm(); renderCredits(); countdown(); syncUI();
+if (matchMedia("(pointer:coarse)").matches) $("#hint").textContent = "Touchez une ville · deux doigts pour tourner";
+
+document.addEventListener("click", e => {
+  const t = e.target;
+  const pg = t.closest("[data-prog]"); if (pg){ setProg(pg.dataset.prog); return; }
+  const s = t.closest("[data-stop]:not(.pin)"); if (s){ stopPlay(); selectStop(s.dataset.stop); return; }
+  const c = t.closest(".chip[data-day]"); if (c){ stopPlay(); selectDay(Number(c.dataset.day)); return; }
+  const g = t.closest("[data-goday]");
+  if (g){ stopPlay(); selectDay(Number(g.dataset.goday)); $("#carte").scrollIntoView({behavior: reduce ? "auto" : "smooth", block:"center"}); return; }
+  if (t.closest("[data-home]")){ stopPlay(); goHome(); return; }
+  const lv = t.closest("[data-lvl]"); if (lv){ state.lvl = lv.dataset.lvl; renderBudget(); renderProgTabs(); return; }
+  const mm = t.closest("#mult button");
+  if (mm){ mult = Number(mm.dataset.m); $$("#mult button").forEach(x => x.setAttribute("aria-pressed", String(x === mm))); renderPrices(); return; }
+  const ph = t.closest("[data-ph]");
+  if (ph){ const card = ph.closest(".place"); const main = card.querySelector("[data-main]"); main.src = img(ph.dataset.ph); main.alt = PH[ph.dataset.ph].alt; card.querySelectorAll("[data-ph]").forEach(x => x.setAttribute("aria-pressed", String(x === ph))); return; }
+  const w = t.closest("[data-who]"); if (w){ who = w.dataset.who; me(); persist(); fillForm(); $("#status").textContent = ""; return; }
+  const fp = t.closest("[data-fprog]"); if (fp){ if (!needWho()) return; me().prog = fp.dataset.fprog; persist(); fillForm(); return; }
+  const fl = t.closest("[data-flvl]"); if (fl){ if (!needWho()) return; me().lvl = fl.dataset.flvl; persist(); fillForm(); return; }
+  const lk = t.closest("[data-like]");
+  if (lk){ if (!needWho()) return; const m = me(); const v = Number(lk.dataset.v); if (m.likes[lk.dataset.like] === v) delete m.likes[lk.dataset.like]; else m.likes[lk.dataset.like] = v; persist(); fillForm(); return; }
+  if (t.closest("#waBtn")){ if (!who){ e.preventDefault(); needWho(); } return; }
+  if (t.closest("#copyBtn")){
+    if (!needWho()) return;
+    const text = message(), st = $("#status");
+    const fallback = () => { const r = document.createRange(); r.selectNodeContents($("#msg")); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); st.textContent = "Le message est sélectionné : fais « Copier », puis colle-le dans WhatsApp."; };
+    try { navigator.clipboard.writeText(text).then(() => { st.textContent = "Message copié : colle-le dans le groupe WhatsApp."; }, fallback); } catch (err) { fallback(); }
+    return;
+  }
+  });
+document.addEventListener("input", e => {
+  const t = e.target;
+  if (t.matches("[data-idea]")){
+    if (!who){ needWho(); return; }
+    me().notes[t.dataset.idea] = t.value; persist(); renderMsg();
+    const s = document.querySelector(`[data-saved="${t.dataset.idea}"]`); if (s) s.textContent = t.value.trim() ? "Ajouté à ton message pour le groupe." : "";
+  }
+  if (t.id === "fmot"){ if (!who){ needWho(); return; } me().mot = t.value; persist(); renderMsg(); }
+});
+$("#home").addEventListener("click", () => { stopPlay(); goHome(); });
+$("#play").addEventListener("click", () => { playTimer ? stopPlay() : startPlay(); });
+
+try { map = initMap(); }
+catch (err){
+  console.error("Carte 3D :", err);
+  $("#nogl").hidden = false; $("#gl").hidden = true;
+  $$(".tools,.legend,.hint").forEach(el => el.hidden = true);
+}
+})();
+</script>
+</body></html>
