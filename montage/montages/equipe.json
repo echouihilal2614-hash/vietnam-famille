@@ -1,10 +1,39 @@
 {
- "Hilal":   {"nom": "Hilal", "role": "Guide touristique franco-vietnamien et tunisien",
-             "details": ["Langues : français · tiếng Việt · tounsi", "Promesse officielle : « aucune randonnée »"], "couleur": "4A6BFF"},
- "Ahmed":   {"nom": "Ahmed Echoui", "role": "Le second guide", "arabe": "صاحب الفلوس", "translit": "Sa7eb el flous",
-             "details": ["Arme secrète : la carte bancaire"], "couleur": "3FA34D"},
- "Mounira": {"nom": "Mounira", "role": "Expéditrice en chef des centres commerciaux",
-             "details": ["Phrase culte : « on regarde juste »", "Financement : voir Ahmed"], "couleur": "B05CE0"},
- "Bochra":  {"nom": "Bochra", "role": "La vacancière qui nous a lâchés au bout de deux semaines",
-             "details": ["Fruits ramenés en France : 0", "Raison : la douane"], "couleur": "F09628"}
+ "Hilal": {
+  "nom": "Hilal",
+  "role": "Guide touristique franco-vietnamien et tunisien",
+  "details": [
+   "Langues : français · tiếng Việt · tounsi",
+   "Promesse officielle : « aucune randonnée »"
+  ],
+  "couleur": "4A6BFF"
+ },
+ "Ahmed": {
+  "nom": "Ahmed Echoui",
+  "role": "Le second guide",
+  "arabe": "وزير المالية",
+  "translit": "Wazir el maliya",
+  "details": [
+   "Arme secrète : la carte bancaire"
+  ],
+  "couleur": "3FA34D"
+ },
+ "Mounira": {
+  "nom": "Mounira",
+  "role": "Expéditrice en chef des centres commerciaux",
+  "details": [
+   "Phrase culte : « on regarde juste »",
+   "Financement : voir Ahmed"
+  ],
+  "couleur": "B05CE0"
+ },
+ "Bochra": {
+  "nom": "Bochra",
+  "role": "La vacancière qui nous a lâchés au bout de deux semaines",
+  "details": [
+   "Fruits ramenés en France : 0",
+   "Raison : la douane"
+  ],
+  "couleur": "F09628"
+ }
 }
