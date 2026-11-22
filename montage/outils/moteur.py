@@ -507,20 +507,39 @@ class Textes:
                 pop = '\\fscx70\\fscy70\\t(0,90,\\fscx100\\fscy100)' if k == 0 else ''
                 self._add(t0, t1 - t0, f'{{{base}{pop}}}' + ' '.join(parts), layer=3)
 
-    def perso(self, t, d, nom, role='', couleur='4A6BFF', cote='gauche'):
-        """Présentation d'un personnage (sur un arrêt sur image) : nom qui glisse + bande de couleur + rôle."""
-        W, H = self.W, self.H; ms = int(d * 1000)
-        x = self.px(120) if cote == 'gauche' else W - self.px(120); an = 1 if cote == 'gauche' else 3
-        y = int(H * 0.62); dx = -self.px(500) if cote == 'gauche' else self.px(500)
-        bw, bh = self.px(560), self.px(170)
-        bx = x - self.px(30) if cote == 'gauche' else x - bw + self.px(30)
-        self._add(t, d, f'{{\\an7\\move({bx + dx},{y - bh + self.px(20)},{bx},{y - bh + self.px(20)},0,220)\\p1\\c&H{couleur}&\\alpha&H30&'
+    def perso(self, t, d, nom, role='', couleur='4A6BFF', cote='gauche', details=(), arabe=None, translit=None):
+        """Présentation d'un personnage façon film de braquage (sur un arrêt sur image) :
+        bande de couleur + NOM qui glisse + rôle + lignes « détail » + éventuellement une ligne en arabe."""
+        W, H = self.W, self.H
+        x = self.px(110) if cote == 'gauche' else W - self.px(110); an = 1 if cote == 'gauche' else 3
+        n_lignes = len(details) + (1 if arabe else 0)
+        y = int(H * 0.50) - self.px(28) * n_lignes; dx = -self.px(600) if cote == 'gauche' else self.px(600)
+        fs_nom = self.px(190) if len(nom) <= 8 else self.px(150)
+        bw, bh = self.px(110 + 34 * len(nom)) * (190 / 150 if len(nom) <= 8 else 1), self.px(175)
+        bw = int(bw); bx = x - self.px(30) if cote == 'gauche' else x - bw + self.px(30)
+        self._add(t, d, f'{{\\an7\\move({bx + dx},{y - bh + self.px(18)},{bx},{y - bh + self.px(18)},0,220)\\p1\\c&H{couleur}&\\alpha&H20&'
                         f'\\bord0\\shad0\\fad(0,250)}}m 0 0 l {bw} 0 {bw - self.px(40)} {bh} 0 {bh}{{\\p0}}', layer=2)
-        self._add(t + 0.08, d - 0.08, f'{{\\an{an}\\move({x + dx},{y},{x},{y},0,240)\\fnAnton\\fs{self.px(190)}\\c&HFFFFFF&'
+        self._add(t + 0.08, d - 0.08, f'{{\\an{an}\\move({x + dx},{y},{x},{y},0,240)\\fnAnton\\fs{fs_nom}\\c&HFFFFFF&'
                         f'\\bord0\\shad{self.px(6)}\\4a&H50&\\fsp{self.px(4)}\\fad(0,250)}}{nom.upper()}', layer=3)
+        yy = y + self.px(22); a7 = an + 6
+        # voile sombre flou derrière le bloc de texte (lisible même sur fond clair)
+        hb = self.px(30) + (self.px(78) if role else 0) + (self.px(110) if arabe else 0) + self.px(58) * len(details)
+        vw = self.px(1250); vx = x - self.px(80) if cote == 'gauche' else x - vw + self.px(80)
+        self._add(t + 0.1, d - 0.1, f'{{\\an7\\pos({vx},{y - bh})\\p1\\c&H000000&\\alpha&H78&\\bord0\\shad0\\blur{self.px(45)}\\fad(250,250)}}'
+                                    f'm 0 0 l {vw} 0 {vw} {bh + hb} 0 {bh + hb}{{\\p0}}', layer=1)
         if role:
-            self._add(t + 0.3, d - 0.3, f'{{\\an{an + 6}\\pos({x},{y + self.px(18)})\\fnMontserrat SemiBold\\fs{self.px(54)}\\c&HFFFFFF&'
-                            f'\\bord{self.px(2)}\\3c&H000000&\\shad{self.px(2)}\\fad(200,250)}}{role}', layer=3)
+            self._add(t + 0.3, d - 0.3, f'{{\\an{a7}\\pos({x},{yy})\\fnMontserrat ExtraBold\\fs{self.px(54)}\\c&HFFFFFF&'
+                            f'\\bord{self.px(3)}\\3c&H000000&\\shad{self.px(2)}\\fad(200,250)}}{role}', layer=3)
+            yy += self.px(78)
+        if arabe:
+            tr = f'{{\\fnMontserrat SemiBold\\fs{self.px(40)}\\c&HFFFFFF&}}  ({translit})' if translit else ''
+            self._add(t + 0.55, d - 0.55, f'{{\\an{a7}\\pos({x},{yy - self.px(8)})\\fnLalezar\\fs{self.px(96)}\\c&H00E5FF&'
+                            f'\\bord{self.px(3)}\\3c&H000000&\\shad{self.px(2)}\\fscx80\\fscy80\\t(0,120,\\fscx100\\fscy100)\\fad(0,250)}}{arabe}{tr}', layer=3)
+            yy += self.px(110)
+        for k, ligne in enumerate(details):
+            self._add(t + 0.75 + 0.3 * k, d - 0.75 - 0.3 * k, f'{{\\an{a7}\\pos({x},{yy})\\fnMontserrat SemiBold\\fs{self.px(42)}\\c&HFFFFFF&'
+                            f'\\bord{self.px(2)}\\3c&H000000&\\shad{self.px(2)}\\fad(150,250)}}{ligne}', layer=3)
+            yy += self.px(58)
 
     def vhs_osd(self, t, d, haut='PLAY', date_txt=None, rew=False):
         k = lambda v: self.px(v * 1.35)
@@ -879,7 +898,7 @@ class Projet:
         ass = f'{self.dossier}/{self.nom}.ass'; self.textes.ecrire(ass)
         # 4) assemblage + transitions + incrustation des textes
         W, H, fps = self.W, self.H, self.fps
-        vf = f"subtitles={ass}:fontsdir={FONTS}"
+        vf = f"ass={ass}:fontsdir={FONTS}:shaping=complex"
         if apercu: vf += f",scale={W // 2}:{H // 2}"
         wr = Ecrivain(sortie, W, H, fps, vf=vf, codec='h264', audio=wav)
         total = S[-1] + N[-1]
