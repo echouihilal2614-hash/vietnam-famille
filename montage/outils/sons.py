@@ -163,3 +163,17 @@ clicks=signal.lfilter(*signal.butter(2,[1000,6000],btype='band',fs=SR),clicks)
 hum=0.12*np.sin(2*np.pi*np.cumsum(20+40*np.minimum(1,tt/1.4))/SR)
 save('projecteur_demarrage', clicks+hum, 0.6)
 print('bruits de tournage ok')
+
+# ================= clavier (texte qui s'écrit) =================
+for k in range(6):
+    d=0.09; tt=t(d); r=np.random.default_rng(100+k)
+    click=signal.lfilter(*signal.butter(2,[2500+r.uniform(-500,800),7000],btype='band',fs=SR),r.standard_normal(len(tt)))*np.exp(-tt*r.uniform(500,800))
+    thock=np.sin(2*np.pi*r.uniform(180,320)*tt)*np.exp(-tt*r.uniform(60,90))*0.5
+    save(f'clavier_{k+1}', reverb(click+thock,0.15,0.08), r.uniform(0.55,0.75))
+d=0.14; tt=t(d)
+x=signal.lfilter(*signal.butter(2,[1500,5000],btype='band',fs=SR),rng.standard_normal(len(tt)))*np.exp(-tt*300)+np.sin(2*np.pi*140*tt)*np.exp(-tt*45)*0.7
+save('clavier_espace', reverb(x,0.2,0.08), 0.75)
+d=0.2; tt=t(d)
+x=signal.lfilter(*signal.butter(2,[1800,6000],btype='band',fs=SR),rng.standard_normal(len(tt)))*np.exp(-tt*250)+np.sin(2*np.pi*120*tt)*np.exp(-tt*35)
+save('clavier_entree', reverb(x,0.25,0.1), 0.85)
+print('clavier ok')

@@ -432,6 +432,8 @@ def ass_time(t):
 class Textes:
     def __init__(self, W, H):
         self.W, self.H = W, H; self.k = min(W, H) / 1080; self.ev = []
+        self.sons = []   # (nom, t, gain) : bruitages déclenchés par les textes (frappe au clavier)
+        self._rng = np.random.default_rng(11)
     def _add(self, t, d, txt, style='Base', layer=1):
         self.ev.append(f'Dialogue: {layer},{ass_time(t)},{ass_time(t + d)},{style},,0,0,0,,{txt}')
     def px(self, v): return int(v * self.k)
@@ -507,7 +509,42 @@ class Textes:
                 pop = '\\fscx70\\fscy70\\t(0,90,\\fscx100\\fscy100)' if k == 0 else ''
                 self._add(t0, t1 - t0, f'{{{base}{pop}}}' + ' '.join(parts), layer=3)
 
-    def perso(self, t, d, nom, role='', couleur='4A6BFF', cote='gauche', details=(), arabe=None, translit=None):
+    def _taper(self, t, t_fin, txt, x, y, an, tags, cps=20, son=True, gain=-10, curseur=True, layer=3):
+        """Texte qui s'écrit lettre par lettre (avec curseur et bruit de touches). Renvoie l'instant de fin de frappe."""
+        times = []; tc = t
+        for ch in txt:
+            times.append(tc)
+            dt = 1 / cps * self._rng.uniform(0.7, 1.35)
+            if ch == ' ': dt *= 1.4
+            if ch in ',.:;!?»': dt *= 2.2
+            tc += dt
+        fin_frappe = tc
+        cur = f'{{\\c&H00E5FF&}}|' if curseur else ''
+        for i, ti in enumerate(times):
+            t1 = times[i + 1] if i + 1 < len(times) else fin_frappe
+            self._add(ti, max(0.01, t1 - ti), f'{{{tags}\\an{an}\\pos({x},{y})}}{txt[:i + 1]}{cur}', layer=layer)
+            if son and txt[i].strip():
+                self.sons.append((f'clavier_{self._rng.integers(1, 7)}', ti, gain + self._rng.uniform(-2, 1)))
+            elif son:
+                self.sons.append(('clavier_espace', ti, gain))
+        if son: self.sons.append(('clavier_entree', fin_frappe, gain + 1))
+        # texte complet jusqu'à la fin, curseur qui clignote
+        tb = fin_frappe; on = False
+        while tb < t_fin - 0.01:
+            te = min(t_fin, tb + 0.4)
+            self._add(tb, te - tb, f'{{{tags}\\an{an}\\pos({x},{y})}}{txt}' + (cur if (on and curseur) else ''), layer=layer)
+            tb = te; on = not on
+        return fin_frappe
+
+    def clavier(self, t, d, txt, x=None, y=None, taille=56, an=7, couleur='FFFFFF', cps=20, gain=-10):
+        """Texte tapé au clavier, seul (ex. légende, date, lieu)."""
+        x = x if x is not None else self.px(110); y = y if y is not None else int(self.H * 0.75)
+        tags = (f'\\fnSpace Mono\\b1\\fs{self.px(taille)}\\c&H{couleur}&\\bord{self.px(3)}\\3c&H000000&'
+                f'\\shad{self.px(2)}\\4a&H60&')
+        self._taper(t, t + d, txt, x, y, an, tags, cps=cps, gain=gain)
+
+    def perso(self, t, d, nom, role='', couleur='4A6BFF', cote='gauche', details=(), arabe=None, translit=None,
+              ecriture='normale', cps=22):
         """Présentation d'un personnage façon film de braquage (sur un arrêt sur image) :
         bande de couleur + NOM qui glisse + rôle + lignes « détail » + éventuellement une ligne en arabe."""
         W, H = self.W, self.H
@@ -527,6 +564,24 @@ class Textes:
         vw = self.px(1250); vx = x - self.px(80) if cote == 'gauche' else x - vw + self.px(80)
         self._add(t + 0.1, d - 0.1, f'{{\\an7\\pos({vx},{y - bh})\\p1\\c&H000000&\\alpha&H78&\\bord0\\shad0\\blur{self.px(45)}\\fad(250,250)}}'
                                     f'm 0 0 l {vw} 0 {vw} {bh + hb} 0 {bh + hb}{{\\p0}}', layer=1)
+        if ecriture == 'clavier':   # rôle puis détails tapés au clavier, ligne après ligne
+            tf = t + d; tc = t + 0.45
+            if role:
+                tags = (f'\\fnSpace Mono\\b1\\fs{self.px(64)}\\c&HFFFFFF&\\bord{self.px(3)}\\3c&H000000&\\shad{self.px(2)}')
+                tc = self._taper(tc, tf, role, x, yy, a7, tags, cps=cps) + 0.15
+                yy += self.px(78)
+            if arabe:
+                tr = f'{{\\fnMontserrat SemiBold\\fs{self.px(40)}\\c&HFFFFFF&}}  ({translit})' if translit else ''
+                self._add(tc, tf - tc, f'{{\\an{a7}\\pos({x},{yy - self.px(8)})\\fnLalezar\\fs{self.px(96)}\\c&H00E5FF&'
+                                f'\\bord{self.px(3)}\\3c&H000000&\\shad{self.px(2)}\\fscx60\\fscy60\\t(0,140,\\fscx100\\fscy100)}}{arabe}{tr}', layer=3)
+                self.sons.append(('pop', tc, -4)); self.sons.append(('ding', tc + 0.05, -12))
+                tc += 0.55; yy += self.px(110)
+            for ligne in details:
+                tags = (f'\\fnSpace Mono\\b1\\fs{self.px(48)}\\c&HDDEEFF&\\bord{self.px(2)}\\3c&H000000&\\shad{self.px(2)}')
+                tc = self._taper(tc, tf, ligne, x, yy, a7, tags, cps=cps * 1.25, gain=-12) + 0.12
+                yy += self.px(58)
+            self.fin_frappe = tc
+            return
         if role:
             self._add(t + 0.3, d - 0.3, f'{{\\an{a7}\\pos({x},{yy})\\fnMontserrat ExtraBold\\fs{self.px(54)}\\c&HFFFFFF&'
                             f'\\bord{self.px(3)}\\3c&H000000&\\shad{self.px(2)}\\fad(200,250)}}{role}', layer=3)
@@ -887,6 +942,7 @@ class Projet:
                     tx['mots'] = conv; tx.pop('d', None)
                     self.textes.paroles(t, 0, **tx); continue
                 getattr(self.textes, kind)(t, tx.pop('d'), **tx)
+        self.sfx += self.textes.sons; self.textes.sons = []
         # 1) plans (en parallèle, sauf les rembobinages qui dépendent des autres)
         normaux = [i for i, p in enumerate(self.plans) if p['type'] != 'rembobinage']
         with ThreadPoolExecutor(workers) as ex: list(ex.map(self.rendre_plan, normaux))

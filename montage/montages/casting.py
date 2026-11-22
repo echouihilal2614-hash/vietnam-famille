@@ -19,11 +19,11 @@ for k, qui in enumerate(['Hilal', 'Ahmed', 'Mounira', 'Bochra']):
     e = EQ[qui]; src, foc = images[qui]
     P.plan(type='photo', src=IMG + src, duree=2 * b + 0.1, zoom=(1.05, 1.18), focus=foc, courbe='in')
     P.transition('flash', 0.16, son='declic_photo', gain=-2)
-    d = 2 * bar - 2 * b + (0.6 if k == 3 else 0)
+    d = 3 * bar - 2 * b + (0.6 if k == 3 else 0)
     P.plan(type='photo', src=IMG + src, duree=d, nb=True, zoom=(1.2, 1.24), focus=foc, vignette=0.4,
            textes=[dict(style='perso', t=0.05, d=d - 0.15, nom=e['nom'], role=e['role'], details=e.get('details', []),
-                        arabe=e.get('arabe'), translit=e.get('translit'), couleur=e['couleur'])],
-           sons=[dict(son='whoosh', t=0.0, gain=-8)] + ([dict(son='ding', t=1.1, gain=-10)] if qui == 'Ahmed' else []))
+                        arabe=e.get('arabe'), translit=e.get('translit'), couleur=e['couleur'], ecriture='clavier')],
+           sons=[dict(son='whoosh', t=0.0, gain=-8)], duck=5)
     P.transition('whip_gauche' if k < 3 else 'fondu_noir', 0.3 if k < 3 else 0.6)
 P.plan(type='ecran', couleur=(0, 0, 0), duree=1.0, look='neutre')
 P.musique(RACINE + '/musique/vacances.wav', debut=0, offset=12 * bar - bar, gain=-1, fondu_out=1.2)
