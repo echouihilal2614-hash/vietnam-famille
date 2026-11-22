@@ -95,7 +95,7 @@ P.plan(type='ecran', couleur=(8, 8, 8), duree=7.5,
                dict(style='sous_titre', t=1.2, d=5.6, txt='AHMED · MOUNIRA · BOCHRA · HILAL', y=665, taille=50),
                dict(style='sous_titre', t=1.8, d=5.0, txt='novembre 2026', y=745, taille=44, police='Montserrat Light')])
 P.musique(M + 'nostalgie.wav', debut=T2 - 0.3, fondu_in=0.6, fondu_out=4.0, gain=-3)
-P.ambiance('vinyle_fond', T2, P.duree_totale() - 0.5, gain=-26)
+P.ambiance('vinyle_fond', T2, P.duree_totale() - 0.5, gain=-16)
 print('durée totale', round(P.duree_totale(), 2), 's ;', len(P.plans), 'plans')
 apercu = '--apercu' in sys.argv
 from moteur import exporter_leger, remixer

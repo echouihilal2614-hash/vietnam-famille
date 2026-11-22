@@ -108,11 +108,58 @@ idx=rng.choice(n, 900, replace=False); x[idx]=rng.standard_normal(900)*rng.unifo
 x=signal.lfilter(*signal.butter(2,[800,9000],btype='band',fs=SR),x)
 hiss=signal.lfilter(*signal.butter(2,[2000,12000],btype='band',fs=SR),rng.standard_normal(n))*0.012
 rumble=signal.lfilter(*signal.butter(2,60,fs=SR),rng.standard_normal(n))*0.15
-save('vinyle_fond', x+hiss+rumble, 0.35)
+save('vinyle_fond', x+hiss+rumble, 0.9)
 # --- projecteur 8mm (fond nostalgique, boucle 20 s) ---
 tt=t(20); clicks=np.zeros(len(tt)); step=int(SR/18)
 for k in range(0,len(tt)-200,step): clicks[k:k+120]+=rng.standard_normal(120)*np.exp(-np.arange(120)/25)
 clicks=signal.lfilter(*signal.butter(2,[1000,6000],btype='band',fs=SR),clicks)
 motor=0.15*np.sin(2*np.pi*60*tt)+0.08*np.sin(2*np.pi*120*tt)
-save('projecteur_fond', clicks+motor*0.3, 0.3)
+save('projecteur_fond', clicks+motor*0.3, 0.9)
 print('ok')
+
+# ================= bruits de tournage / photo =================
+# --- clap de cinéma (claquement sec en bois) ---
+d=0.5; tt=t(d); x=rng.standard_normal(len(tt))*np.exp(-tt*60)
+x=signal.lfilter(*signal.butter(2,[700,6000],btype='band',fs=SR),x)
+x+=0.6*np.sin(2*np.pi*420*tt)*np.exp(-tt*45)+0.3*np.sin(2*np.pi*1150*tt)*np.exp(-tt*70)
+save('clap_cinema', reverb(x,0.5,0.18), 0.95)
+# --- bip REC de caméscope (deux bips) ---
+x=np.zeros(int(0.45*SR))
+for st in (0.0,0.18):
+    i=int(st*SR); m=int(0.09*SR); tt=np.arange(m)/SR
+    x[i:i+m]+=np.sin(2*np.pi*2400*tt)*np.minimum(1,np.minimum(tt,(m/SR-tt))/0.004)
+save('bip_rec', x, 0.5)
+# --- flash qui se charge puis se déclenche ---
+d=1.4; tt=t(d); f=900+3200*(tt/d)**0.6
+x=np.sin(2*np.pi*np.cumsum(f)/SR)*0.25*np.minimum(1,tt/0.05)
+x[int(1.15*SR):]=0
+i=int(1.15*SR); m=len(x)-i; tp=np.arange(m)/SR
+x[i:]+=signal.lfilter(*signal.butter(2,[1200,9000],btype='band',fs=SR),rng.standard_normal(m))*np.exp(-tp*70)
+x[i:]+=0.5*np.sin(2*np.pi*160*tp)*np.exp(-tp*40)
+save('flash', reverb(x,0.4,0.15), 0.8)
+# --- avance de pellicule (molette à cliquets) ---
+d=0.7; x=np.zeros(int(d*SR))
+for k in range(9):
+    i=int((0.02+k*0.068+rng.uniform(-0.006,0.006))*SR); m=int(0.03*SR); tp=np.arange(m)/SR
+    x[i:i+m]+=signal.lfilter(*signal.butter(2,[1800,7000],btype='band',fs=SR),rng.standard_normal(m))*np.exp(-tp*220)*rng.uniform(0.6,1)
+save('avance_pellicule', x, 0.7)
+# --- Polaroid qui éjecte la photo (moteur + engrenages) ---
+d=1.3; tt=t(d); env=np.minimum(1,tt/0.06)*np.minimum(1,(d-tt)/0.1).clip(0)
+motor=signal.sawtooth(2*np.pi*np.cumsum(95+25*np.sin(2*np.pi*3*tt))/SR)*0.35
+gear=signal.lfilter(*signal.butter(2,[2000,6000],btype='band',fs=SR),rng.standard_normal(len(tt)))*(0.5+0.5*np.sign(np.sin(2*np.pi*38*tt)))*0.25
+x=signal.lfilter(*signal.butter(2,2500,fs=SR),motor)+gear
+save('polaroid', x*env, 0.6)
+# --- rafale de photos (paparazzi) ---
+d=1.2; x=np.zeros(int(d*SR)); sh,_=sf.read(OUT+'declic_photo.wav')
+sh=sh[:,0] if sh.ndim>1 else sh
+for k in range(7):
+    i=int(k*0.15*SR); j=min(len(x),i+len(sh)); x[i:j]+=sh[:j-i]*rng.uniform(0.6,1)
+save('rafale_photos', x, 0.85)
+# --- démarrage de projecteur (moteur qui prend de la vitesse) ---
+d=2.0; tt=t(d); rate=4+14*np.minimum(1,tt/1.4)**1.5; ph=np.cumsum(rate)/SR
+clicks=np.zeros(len(tt)); idx=np.where(np.diff(np.floor(ph))>0)[0]
+for i in idx: clicks[i:i+120]+=rng.standard_normal(min(120,len(tt)-i))*np.exp(-np.arange(min(120,len(tt)-i))/25)
+clicks=signal.lfilter(*signal.butter(2,[1000,6000],btype='band',fs=SR),clicks)
+hum=0.12*np.sin(2*np.pi*np.cumsum(20+40*np.minimum(1,tt/1.4))/SR)
+save('projecteur_demarrage', clicks+hum, 0.6)
+print('bruits de tournage ok')
