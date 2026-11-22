@@ -1,0 +1,10 @@
+cache/
+rendus/
+looks/
+sons/*.wav
+musique/*.wav
+musique/*.json
+test_rushes/
+test_analyse/
+npmfonts/
+__pycache__/
