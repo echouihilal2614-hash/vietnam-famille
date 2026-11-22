@@ -8,3 +8,4 @@ test_rushes/
 test_analyse/
 npmfonts/
 __pycache__/
+.venv/

@@ -23,3 +23,16 @@
 ## Fichiers
 - Vidéos/photos : sur le Mac de Hilal (dossier partagé via Remote Control) ; dépôt privé `vietnam-montage` pour les petits fichiers.
 - Format (horizontal / vertical) : à confirmer.
+
+## Où on en est (22 nov. 2026, soir)
+- Fait : moteur de montage, démo de style, planche sonore, casting (rôles tapés au clavier), transcription des paroles,
+  sous-titres TikTok, arrêt sur image + fiche personnage, bandes cinéma.
+- Les rushes sont sur le Mac de Hilal dans `~/Documents/Vietnam` (pas accessibles depuis une session cloud) :
+  le montage continue dans une session Claude Code qui tourne sur le Mac.
+- Prochaines étapes :
+  1. `preparer.sh`, puis `outils/analyse.py ~/Documents/Vietnam <sortie>` et `outils/paroles.py ~/Documents/Vietnam --sortie <sortie>`.
+  2. Regarder les planches contact + paroles.md, repérer les moments drôles (« Welcome to Qatar »), les vidéos d'aéroport/avion.
+  3. Demander à Hilal : format (horizontal/vertical), MP3 des musiques, vidéo/moment précis pour figer chaque personne du casting.
+  4. Monter : intro mode avion -> départ en coupes rapides -> « Welcome to Qatar » -> titre VIỆT NAM -> casting (nom + rôle tapés au clavier)
+     -> voyage (lieux, carte, gags avec le vrai son) -> rembobinage VHS -> partie nostalgie (polaroïds, musique nostalgique) -> générique.
+  5. Exporter une version avec musique (famille/WhatsApp) et une sans musique (TikTok/Insta).

@@ -5,7 +5,7 @@ Tout tourne avec `ffmpeg` + Python ; rien n'est envoyé sur Internet.
 
 ## Démarrer une session
 ```bash
-./preparer.sh                      # bibliothèques, polices, sons et musiques provisoires
+./preparer.sh                      # environnement Python (.venv), sons et musiques provisoires (Mac : brew install ffmpeg avant)
 python3 outils/analyse.py <rushes> <sortie>   # inventaire + planches contact + lieux (GPS) + pics sonores
 python3 outils/rythme.py chanson.mp3          # tempo, temps, mesures (pour caler les coupes)
 python3 outils/paroles.py <rushes> --sortie <dossier>   # ce qui se dit dans chaque vidéo, mot par mot
