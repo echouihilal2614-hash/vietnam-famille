@@ -7,6 +7,7 @@ from scipy import signal
 SR=48000; rng=np.random.default_rng(3)
 import os
 OUT=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'musique') + '/'
+os.makedirs(OUT, exist_ok=True)
 def midi(m): return 440*2**((m-69)/12)
 NOTE={'C':0,'C#':1,'Db':1,'D':2,'D#':3,'Eb':3,'E':4,'F':5,'F#':6,'Gb':6,'G':7,'G#':8,'Ab':8,'A':9,'A#':10,'Bb':10,'B':11}
 def n(s):  # 'A4' -> midi

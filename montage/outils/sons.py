@@ -5,6 +5,7 @@ SR = 48000
 rng = np.random.default_rng(7)
 import os
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'sons') + '/'
+os.makedirs(OUT, exist_ok=True)
 
 def t(d): return np.arange(int(d*SR))/SR
 def norm(x, peak=0.9): return x/np.max(np.abs(x)+1e-9)*peak
