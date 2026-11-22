@@ -18,7 +18,7 @@ ATELIER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FONTS = ATELIER + '/fonts'
 SONS = ATELIER + '/sons'
 SR = 48000
-VERSIONS = {'carte': 3}
+VERSIONS = {'carte': 3, 'video': 2, 'photo': 2}
 HDR_TM = 'zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=hable:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p'
 
 # ============================================================ looks (LUT 3D)
@@ -481,6 +481,47 @@ class Textes:
         self._add(t, d, f'{{\\an{an}\\pos({x},{y})\\frz{rot}\\fn{police}\\fs{self.px(taille)}\\c&H{couleur}&\\bord0'
                         f'\\shad{self.px(4)}\\4a&H50&\\blur10\\t(0,700,\\blur0.6)\\fad(600,600)}}{txt}')
 
+    def paroles(self, t, d, mots, taille=88, y=None, couleur_mot='00E5FF', max_mots=3, majuscules=True):
+        """Sous-titres façon TikTok : 2-3 mots à la fois, le mot prononcé surligné et grossi.
+        mots = [{'mot', 'debut', 'fin'}] en temps de la timeline (convertis par Projet.rendre)."""
+        y = y if y is not None else int(self.H * 0.82)
+        mots = [m for m in mots if m['mot'].strip()]
+        groupes, g = [], []
+        for m in mots:
+            if g and (len(g) >= max_mots or m['debut'] - g[-1]['fin'] > 0.45 or g[-1]['mot'][-1:] in '.!?,'):
+                groupes.append(g); g = []
+            g.append(m)
+        if g: groupes.append(g)
+        base = (f'\\an2\\pos({self.W // 2},{y})\\fnMontserrat ExtraBold\\fs{self.px(taille)}\\c&HFFFFFF&\\3c&H000000&'
+                f'\\bord{self.px(7)}\\shad{self.px(3)}\\4a&H60&')
+        for gi, g in enumerate(groupes):
+            fin_g = min(g[-1]['fin'] + 0.3, groupes[gi + 1][0]['debut'] if gi + 1 < len(groupes) else g[-1]['fin'] + 0.3)
+            for k, m in enumerate(g):
+                t0 = m['debut']; t1 = g[k + 1]['debut'] if k + 1 < len(g) else fin_g
+                if t1 <= t0: continue
+                parts = []
+                for j, mm in enumerate(g):
+                    w = mm['mot'].upper() if majuscules else mm['mot']
+                    if j == k: parts.append(f'{{\\c&H{couleur_mot}&\\fscx112\\fscy112}}{w}{{\\c&HFFFFFF&\\fscx100\\fscy100}}')
+                    else: parts.append(w)
+                pop = '\\fscx70\\fscy70\\t(0,90,\\fscx100\\fscy100)' if k == 0 else ''
+                self._add(t0, t1 - t0, f'{{{base}{pop}}}' + ' '.join(parts), layer=3)
+
+    def perso(self, t, d, nom, role='', couleur='4A6BFF', cote='gauche'):
+        """Présentation d'un personnage (sur un arrêt sur image) : nom qui glisse + bande de couleur + rôle."""
+        W, H = self.W, self.H; ms = int(d * 1000)
+        x = self.px(120) if cote == 'gauche' else W - self.px(120); an = 1 if cote == 'gauche' else 3
+        y = int(H * 0.62); dx = -self.px(500) if cote == 'gauche' else self.px(500)
+        bw, bh = self.px(560), self.px(170)
+        bx = x - self.px(30) if cote == 'gauche' else x - bw + self.px(30)
+        self._add(t, d, f'{{\\an7\\move({bx + dx},{y - bh + self.px(20)},{bx},{y - bh + self.px(20)},0,220)\\p1\\c&H{couleur}&\\alpha&H30&'
+                        f'\\bord0\\shad0\\fad(0,250)}}m 0 0 l {bw} 0 {bw - self.px(40)} {bh} 0 {bh}{{\\p0}}', layer=2)
+        self._add(t + 0.08, d - 0.08, f'{{\\an{an}\\move({x + dx},{y},{x},{y},0,240)\\fnAnton\\fs{self.px(190)}\\c&HFFFFFF&'
+                        f'\\bord0\\shad{self.px(6)}\\4a&H50&\\fsp{self.px(4)}\\fad(0,250)}}{nom.upper()}', layer=3)
+        if role:
+            self._add(t + 0.3, d - 0.3, f'{{\\an{an + 6}\\pos({x},{y + self.px(18)})\\fnMontserrat SemiBold\\fs{self.px(54)}\\c&HFFFFFF&'
+                            f'\\bord{self.px(2)}\\3c&H000000&\\shad{self.px(2)}\\fad(200,250)}}{role}', layer=3)
+
     def vhs_osd(self, t, d, haut='PLAY', date_txt=None, rew=False):
         k = lambda v: self.px(v * 1.35)
         if rew:
@@ -583,6 +624,10 @@ class Projet:
                 f = self.fx.grain_(cv2.convertScaleAbs(f, alpha=b), k, 7)
             elif p.get('vignette', 0):
                 f = self.fx.vignette(f, p['vignette'])
+            if p.get('cinema'):   # bandes noires 2.39:1 (qui arrivent si cinema='entree')
+                bh = int((H - W / 2.39) / 2) if W > H else int(H * 0.09)
+                if p['cinema'] == 'entree': bh = int(bh * ease(k / (0.45 * fps), 'out'))
+                if bh > 0: f[:bh] = 0; f[H - bh:] = 0
             wr.ecrire(f)
         wr.fermer(); os.replace(tmp, out)
         return out
@@ -813,6 +858,15 @@ class Projet:
         for i, p in enumerate(self.plans):
             for tx in p.get('textes', []):
                 tx = dict(tx); kind = tx.pop('style'); t = S[i] / self.fps + tx.pop('t', 0)
+                if kind == 'paroles':   # mots minutés dans le temps du rush -> temps de la timeline
+                    v = p.get('vitesse', 1.0); gel = p.get('gel'); conv = []
+                    for m in tx.pop('mots'):
+                        r0, r1 = (m['debut'] - p.get('debut', 0)) / v, (m['fin'] - p.get('debut', 0)) / v
+                        if gel and r0 >= gel[0]: r0 += gel[1]; r1 += gel[1]
+                        if 0 <= r0 < p['duree'] - 0.05:
+                            conv.append(dict(mot=m['mot'], debut=S[i] / self.fps + r0, fin=S[i] / self.fps + min(r1, p['duree'])))
+                    tx['mots'] = conv; tx.pop('d', None)
+                    self.textes.paroles(t, 0, **tx); continue
                 getattr(self.textes, kind)(t, tx.pop('d'), **tx)
         # 1) plans (en parallèle, sauf les rembobinages qui dépendent des autres)
         normaux = [i for i, p in enumerate(self.plans) if p['type'] != 'rembobinage']
